@@ -56,11 +56,11 @@ public class ManterServicoDAO extends DAO {
         return listaServico;
     }
 
-    public void deletar(Servico servico) throws Exception {
+    public void deletar(int id) throws Exception {
         abrirBanco();
         String query = "DELETE FROM " + nomeTabela + " WHERE " + idServico + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
-        pst.setInt(1, servico.getIdServico());
+        pst.setInt(1, id);
         pst.execute();
         fecharBanco();
     }

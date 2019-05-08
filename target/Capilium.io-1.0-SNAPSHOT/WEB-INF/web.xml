@@ -7,6 +7,18 @@
         <servlet-name>UsuarioControllers</servlet-name>
         <servlet-class>br.com.bean.cliente.UsuarioControllers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeletarFuncionario</servlet-name>
+        <servlet-class>br.com.bean.funcionario.DeletarFuncionario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletarServico</servlet-name>
+        <servlet-class>br.com.bean.servico.DeletarServico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeletarCliente</servlet-name>
+        <servlet-class>br.com.bean.cliente.DeletarCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>UsuarioControllers</servlet-name>
         <url-pattern>/UsuarioControllers</url-pattern>
@@ -15,10 +27,22 @@
         <servlet-name>WebjarsServlet</servlet-name>
         <servlet-class>org.webjars.servlet.WebjarsServlet</servlet-class>
         <load-on-startup>3</load-on-startup>
-    </servlet>    
+    </servlet>
     <servlet-mapping>
         <servlet-name>WebjarsServlet</servlet-name>
         <url-pattern>/webjars/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletarFuncionario</servlet-name>
+        <url-pattern>/DeletarFuncionario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletarServico</servlet-name>
+        <url-pattern>/DeletarServico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeletarCliente</servlet-name>
+        <url-pattern>/DeletarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -126,4 +126,26 @@ public class ManterUsuarioDAO extends DAO {
         }
         return null;
     }
+    
+    public Usuario pesquisar(int id) throws Exception {
+        try {
+            Usuario userbean = new Usuario();
+            abrirBanco();
+            String query = "SELECT * FROM " + nomeTabela + " WHERE " + idUsuario + " = ?";
+            pst = con.prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+                userbean.setIdUsuario(rs.getInt(idUsuario));
+                userbean.setLogin(rs.getString(login));
+                userbean.setNome(rs.getString(nome));
+                return userbean;
+            }
+            fecharBanco();
+        } catch (Exception e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+        return null;
+    }
 }
