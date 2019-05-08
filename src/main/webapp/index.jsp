@@ -1,7 +1,7 @@
 <%@include file="util/header.jsp" %> 
-<%@include file="util/navbar.jsp" %> 
+<%@include file="util/navbar-out.jsp" %> 
 <body>
-    <div class="container">
+    <div class="container" style="margin-top: 80px">
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
@@ -18,7 +18,7 @@
                             </div>
                             <hr class="my-4">
 
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Entrar</button>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"><span class="fa fa-sign-in fa-fw"></span>Entrar</button>
                         </form>
                     </div>
                 </div>

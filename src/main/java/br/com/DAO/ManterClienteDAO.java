@@ -65,11 +65,11 @@ public class ManterClienteDAO extends DAO {
         return listaCliente;
     }
 
-    public void deletar(Cliente cliente) throws Exception {
+    public void deletar(int id) throws Exception {
         abrirBanco();
         String query = "DELETE FROM " + nomeTabela + " WHERE " + idCliente + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
-        pst.setInt(1, cliente.getIdCliente());
+        pst.setInt(1, id);
         pst.execute();
         fecharBanco();
     }
