@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package br.com.bean.funcionario;
 
 import br.com.DAO.ManterFuncionarioDAO;
@@ -16,10 +12,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author lukka
- */
 public class DeletarFuncionario extends HttpServlet {
 
     /**
@@ -36,12 +28,11 @@ public class DeletarFuncionario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
-            //System.out.println(request.getParameter("id"));
             ManterFuncionarioDAO dao = new ManterFuncionarioDAO();
-            dao.deletar(Integer.valueOf(request.getParameter("id")));
+            dao.deletar(Integer.valueOf(request.getParameter("idFuncionario")));
             
-            request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+            request.setAttribute("msg", "Exclusão realizada com sucesso!!!");
+            RequestDispatcher rd = request.getRequestDispatcher("all-funcionario.jsp");
             rd.forward(request, response);
         }
     }

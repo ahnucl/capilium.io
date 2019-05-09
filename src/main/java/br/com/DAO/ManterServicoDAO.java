@@ -13,19 +13,22 @@ public class ManterServicoDAO extends DAO {
     private static String idServico = "idServico"; // PK da tablea
     private static String descricao = "descricao";
     private static String valor = "valor";
+    private static String suspenso = "suspenso";
     private static String tempoMedioAtendimento = "tempoMedioAtendimento";
 
     public void inserir(Servico servico) throws Exception {
         try {
             abrirBanco();
-            String query = "INSERT INTO " + nomeTabela + ""
+            String query = "INSERT INTO " + nomeTabela + " "
                     + "(" + idServico + ", " + descricao + ", "
-                    + valor + ", " + tempoMedioAtendimento + ")"
-                    + "VALUES(NULL, ?, ?, ?)";
+                    + valor + ", " + tempoMedioAtendimento + ", "
+                    + suspenso + ")"
+                    + "VALUES(NULL, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, servico.getDescricao());
             pst.setFloat(2, servico.getValor());
             pst.setString(3, servico.getTempoMedioAtendimento());
+            pst.setBoolean(4, servico.getSuspenso());
             pst.execute();
             fecharBanco();
         } catch (Exception e) {
@@ -46,6 +49,7 @@ public class ManterServicoDAO extends DAO {
                 servicobean.setIdServico(rs.getInt(idServico));
                 servicobean.setDescricao(rs.getString(descricao));
                 servicobean.setValor(rs.getFloat(valor));
+                servicobean.setSuspenso(rs.getBoolean(suspenso));
                 servicobean.setTempoMedioAtendimento(rs.getString(tempoMedioAtendimento));
                 listaServico.add(servicobean);
             }
@@ -71,14 +75,16 @@ public class ManterServicoDAO extends DAO {
             String query = "UPDATE " + nomeTabela + " SET "
                     + descricao + " = ?,"
                     + valor + " = ?,"
-                    + tempoMedioAtendimento + " = ? "
+                    + tempoMedioAtendimento + " = ?, "
+                    + suspenso + " = ? "
                     + "WHERE " + idServico + "=?;";
             pst = con.prepareStatement(query);
             pst.setString(1, servico.getDescricao());
             pst.setFloat(2, servico.getValor());
             pst.setString(3, servico.getTempoMedioAtendimento());
+            pst.setBoolean(4, servico.getSuspenso());
 
-            pst.setInt(4, servico.getIdServico());
+            pst.setInt(5, servico.getIdServico());
             pst.execute();
             fecharBanco();
 
@@ -100,6 +106,7 @@ public class ManterServicoDAO extends DAO {
                 servicobean.setIdServico(rs.getInt(idServico));
                 servicobean.setValor(rs.getFloat(valor));
                 servicobean.setDescricao(rs.getString(descricao));
+                servicobean.setSuspenso(rs.getBoolean(suspenso));
                 servicobean.setTempoMedioAtendimento(rs.getString(tempoMedioAtendimento));
                 return servicobean;
             }

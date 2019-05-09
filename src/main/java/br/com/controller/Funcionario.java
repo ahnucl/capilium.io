@@ -1,10 +1,10 @@
 
 package br.com.controller;
 
-public class Funcionario extends Usuario{
+public class Funcionario {
     private int idFuncionario;
     private String matricula;
-    private Usuario usuario;
+    private String nome;
 
     public int getIdFuncionario() {
         return idFuncionario;
@@ -22,22 +22,21 @@ public class Funcionario extends Usuario{
         this.matricula = matricula;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public String getNome() {
+        return nome;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public Funcionario() {
     }
 
-    public Funcionario(int idFuncionario, String matricula, Usuario usuario, int idUsuario, String nome, String login, String senha) {
-        super(idUsuario, nome, login, senha);
+    public Funcionario(int idFuncionario, String matricula, String nome) {
         this.idFuncionario = idFuncionario;
         this.matricula = matricula;
-        this.usuario = usuario;
+        this.nome = nome;
     }
     
 }

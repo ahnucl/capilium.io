@@ -1,3 +1,4 @@
+<%@page import="javax.faces.context.FacesContext"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -10,9 +11,12 @@
         <%
             session.removeAttribute("nomeUsuarioLogado");
             session.removeAttribute("idUsuario");
+            session.removeAttribute("id");
             session.invalidate();
-            request.getRequestDispatcher("index.jsp").forward(request, response);
-            response.sendRedirect("index.jsp");
+            
+            //FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
+           // request.getRequestDispatcher("index.jsp").forward(request, response);;
+            response.sendRedirect("/Capilium.io/index.jsp");
         %>
     </body>
 </html>

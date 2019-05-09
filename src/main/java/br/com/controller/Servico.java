@@ -3,6 +3,7 @@ package br.com.controller;
 public class Servico {
     private int idServico;
     private float valor;
+    private boolean suspenso;
     private String descricao, tempoMedioAtendimento;
 
     public int getIdServico() {
@@ -20,7 +21,15 @@ public class Servico {
     public void setValor(float valor) {
         this.valor = valor;
     }
+    
+    public boolean getSuspenso() {
+        return suspenso;
+    }
 
+    public void setSuspenso(boolean suspenso) {
+        this.suspenso = suspenso;
+    }
+    
     public String getDescricao() {
         return descricao;
     }
@@ -40,10 +49,11 @@ public class Servico {
     public Servico() {
     }
 
-    public Servico(int idServico, float valor, String descricao, String tempoMedioAtendimento) {
+    public Servico(int idServico, float valor, String descricao, boolean suspenso, String tempoMedioAtendimento) {
         this.idServico = idServico;
         this.valor = valor;
         this.descricao = descricao;
+        this.suspenso = suspenso;
         this.tempoMedioAtendimento = tempoMedioAtendimento;
     }
 }

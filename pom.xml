@@ -14,37 +14,36 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <repositories>
+    <!--<repositories>
         
-        <!-- MAVEN REPOSITORY -->
         <repository>
             <id>mvn-repository</id>
             <url>http://mvnrepository.com/</url>
         </repository>
-        <!-- MYSQL REPOSITORY -->
+        
         <repository>
             <id>mysql</id>
             <url>https://mvnrepository.com/artifact/mysql/mysql-connector-java</url>
         </repository>
 
-        <!-- MAVEN SEARCH REPOSITORY -->
+        
         <repository>
             <id>mavensearch</id>
             <url>http://www.mvnsearch.org/maven2</url>
         </repository>
 
-        <!-- GOOGLE REPOSITORY -->
+        
         <repository>
             <id>google-repository</id>
             <url>http://google-maven-repository.googlecode.com/svn/repository/</url>
         </repository>
 
-        <!-- BOOTSTRAP REPOSITORY -->
+        
         <repository>
             <id>bootstrap</id>
             <url>https://mvnrepository.com/artifact/org.webjars/bootstrap</url>
         </repository>
-    </repositories>
+    </repositories> -->
     
     <dependencies>
         <!--<dependency>
