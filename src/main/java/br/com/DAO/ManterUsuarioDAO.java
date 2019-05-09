@@ -83,7 +83,7 @@ public class ManterUsuarioDAO extends DAO {
         return false;
     }
 
-    public Usuario permissaoAcesso(Usuario user) throws Exception {
+    public Usuario verificarAcesso(Usuario user) throws Exception {
         try {
             Usuario obj = new Usuario();
             abrirBanco();
@@ -111,7 +111,7 @@ public class ManterUsuarioDAO extends DAO {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) AS valor FROM "
-                    + "Funcionario"
+                    + "Cliente"
                     + " WHERE " + idUsuario + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, user.getIdUsuario());

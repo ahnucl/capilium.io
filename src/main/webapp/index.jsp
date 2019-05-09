@@ -1,14 +1,31 @@
 <%@include file="util/header.jsp" %> 
 <%@include file="util/navbar-out.jsp" %> 
 <body>
-    <div class="container" style="margin-top: 80px">
+    <div class="container" style="margin-top: 4em">
+        <%
+            String msg = "";
+            msg = (String) request.getAttribute("msg"); // Mensagem de aviso ou validaçõe que vem da servlets
+            boolean show = (msg == null || msg.isEmpty()) ? false : true;
+
+            if (show) {
+        %>
+
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong><%= msg%></strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <%
+            }
+        %>
         <div class="row">
             <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
                 <div class="card card-signin my-5">
                     <div class="card-body">
                         <h5 class="card-title text-center">Capillum.io</h5>
-                         <!-- action="UsuarioControllers" -->
-                        <form class="form-signin" method="POST">
+                        <!-- action="UsuarioControllers" -->
+                        <form class="form-signin" method="POST" action="UsuarioControllers">
                             <div class="form-label-group">
                                 <input type="text" id="inputLogin" name="login" class="form-control" placeholder="Digite seu usuário" required autofocus>
                             </div>

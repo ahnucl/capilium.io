@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-    <a class="navbar-brand" href="home.jsp">
+    <a class="navbar-brand" href="index.jsp">
         <img src="img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
         Capillium.io
     </a>

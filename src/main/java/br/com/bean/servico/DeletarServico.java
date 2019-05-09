@@ -39,7 +39,7 @@ public class DeletarServico extends HttpServlet {
             dao.deletar(Integer.valueOf(request.getParameter("id")));
             
             request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("home.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("all-servico.jsp");
             rd.forward(request, response);
         }
     }
