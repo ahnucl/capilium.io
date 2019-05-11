@@ -2,7 +2,7 @@ package br.com.controller;
 
 public class Usuario {
     private int idUsuario;
-    private String nome,login,senha;
+    private String login,senha;
 
     public int getIdUsuario() {
         return idUsuario;
@@ -10,14 +10,6 @@ public class Usuario {
 
     public void setIdUsuario(int idUsuario) {
         this.idUsuario = idUsuario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
     }
 
     public String getLogin() {
@@ -39,9 +31,8 @@ public class Usuario {
     public Usuario() {
     }
 
-    public Usuario(int idUsuario, String nome, String login, String senha) {
+    public Usuario(int idUsuario, String login, String senha) {
         this.idUsuario = idUsuario;
-        this.nome = nome;
         this.login = login;
         this.senha = senha;
     }

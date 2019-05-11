@@ -13,22 +13,23 @@ public class ManterClienteDAO extends DAO {
     private static String nomeTabela = "Cliente"; //nome da tabela
     private static String idCliente = "idCliente"; // PK da tablea
     private static String telefone = "telefone";
+    private static String nome = "nome";
     private static String email = "email";
     private static String cpf = "cpf";
     private static String idUsuario = "idUsuario";// FK da tablea
 
-    public void inserir(Cliente cliente, Usuario usuario) throws Exception {
+    public void inserir(Cliente cliente) throws Exception {
         try {
             abrirBanco();
-            String query = "INSERT INTO " + nomeTabela + ""
-                    + "(" + idCliente + ", " + telefone + ","
-                    + email + ", " + cpf + ", " + idUsuario + ")"
-                    + "VALUES(NULL, ?, ?, ?, ?)";
+            String query = "INSERT INTO " + nomeTabela + " (" + idCliente + ", " + nome + ", " + telefone + ", "
+                    + email + ", " + cpf + ", " + idUsuario + ") "
+                    + "VALUES(NULL, ?, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
-            pst.setString(1, cliente.getTelefone());
-            pst.setString(2, cliente.getEmail());
-            pst.setString(3, cliente.getCpf().replace(".", "").replace("-", ""));
-            pst.setInt(4, usuario.getIdUsuario());
+            pst.setString(1, cliente.getNome());
+            pst.setString(2, cliente.getTelefone());
+            pst.setString(3, cliente.getEmail());
+            pst.setString(4, cliente.getCpf().replace(".", "").replace("-", ""));
+            pst.setInt(5, cliente.getUsuario().getIdUsuario());
             pst.execute();
             fecharBanco();
         } catch (Exception e) {
@@ -53,6 +54,7 @@ public class ManterClienteDAO extends DAO {
                 clientebean.setTelefone(rs.getString(telefone));
                 clientebean.setEmail(rs.getString(email));
                 clientebean.setCpf(rs.getString(cpf));
+                clientebean.setNome(rs.getString(nome));
                 usuariobean.setIdUsuario(rs.getInt(idUsuario));
                 clientebean.setUsuario(usuariobean);
 
@@ -81,13 +83,15 @@ public class ManterClienteDAO extends DAO {
                     + telefone + " = ?,"
                     + email + " = ?,"
                     + cpf + " = ? "
+                    + nome + " = ? "
                     + "WHERE " + idCliente + "=?;";
             pst = con.prepareStatement(query);
             pst.setString(1, cliente.getTelefone());
             pst.setString(2, cliente.getEmail());
             pst.setString(3, cliente.getCpf().replace(".", "").replace("-", ""));
-
-            pst.setInt(4, cliente.getIdCliente());
+            pst.setString(4, cliente.getNome());
+            
+            pst.setInt(5, cliente.getIdCliente());
             pst.execute();
             fecharBanco();
 
@@ -113,6 +117,7 @@ public class ManterClienteDAO extends DAO {
                 clientebean.setTelefone(rs.getString(telefone));
                 clientebean.setEmail(rs.getString(email));
                 clientebean.setCpf(rs.getString(cpf));
+                clientebean.setCpf(rs.getString(nome));
                 usuariobean.setIdUsuario(rs.getInt(idUsuario));
                 clientebean.setUsuario(usuariobean);
 

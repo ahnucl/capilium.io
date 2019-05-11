@@ -28,6 +28,10 @@
         <servlet-name>UsuarioControllers</servlet-name>
         <servlet-class>br.com.bean.usuario.UsuarioControllers</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CadastrarCliente</servlet-name>
+        <servlet-class>br.com.bean.cliente.CadastrarCliente</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WebjarsServlet</servlet-name>
         <url-pattern>/webjars/*</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>UsuarioControllers</servlet-name>
         <url-pattern>/UsuarioControllers</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarCliente</servlet-name>
+        <url-pattern>/CadastrarCliente</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

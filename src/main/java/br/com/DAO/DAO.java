@@ -12,7 +12,7 @@ public class DAO {
 
     //Dados para configuração do banco
     private static String ip = "localhost";
-    private static String nomeBanco = "capillium.io";
+    private static String nomeBanco = "testes";
     private static String user = "root";
     private static String senha = "";
 
