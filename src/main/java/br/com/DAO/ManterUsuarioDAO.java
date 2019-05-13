@@ -11,26 +11,33 @@ public class ManterUsuarioDAO extends DAO {
     para assim ficar mais facil se mudar o nome da coluna na tabela*/
     private static String nomeTabela = "Usuario"; //Nome da tabela
     private static String idUsuario = "idUsuario";//PK da tabela
-    private static String nome = "nome";
     private static String login = "login";
     private static String senha = "senha";
 
-    public void inserir(Usuario user) throws Exception {
+    public int inserir(Usuario user) throws Exception {
         try {
 
             abrirBanco();
             String query = "INSERT INTO " + nomeTabela + " "
-                    + "(" + idUsuario + ", " + nome + ", " + login + ", " + senha + ") "
-                    + "VALUES(null, ?, ?, ?)";
+                    + "(" + idUsuario + ", " + login + ", " + senha + ") "
+                    + "VALUES(null, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
-            pst.setString(1, user.getNome());
-            pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
-            pst.setString(3, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
+            pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
+            pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
             pst.execute();
+            
+            // buscar o ultimo ID na cadastrado na tabela durante a mesma conexão
+            String queryReturnId = "SELECT LAST_INSERT_ID() as id FROM " + nomeTabela;
+            pst = con.prepareStatement(queryReturnId);
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return (int)rs.getInt("id");
+            }
             fecharBanco();
         } catch (Exception e) {
             System.out.println("Erro " + e.getMessage());
         }
+        return 0;
     }
 
     public void deletar(Usuario user) throws Exception {
@@ -46,14 +53,13 @@ public class ManterUsuarioDAO extends DAO {
         try {
             abrirBanco();
             String query = "UPDATE " + nomeTabela + " "
-                    + "SET " + nome + " = ?, " + login + " = ?, " + senha + " = ?"
+                    + "SET " + login + " = ?, " + senha + " = ?"
                     + "WHERE " + idUsuario + " = ?;";
             pst = con.prepareStatement(query);
-            pst.setString(1, user.getNome());
-            pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
-            pst.setString(3, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
+            pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
+            pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
 
-            pst.setInt(4, user.getIdUsuario());
+            pst.setInt(3, user.getIdUsuario());
             pst.execute();
             fecharBanco();
 
@@ -69,7 +75,7 @@ public class ManterUsuarioDAO extends DAO {
                     + "FROM " + nomeTabela + " "
                     + "WHERE " + login + " = ?";
             pst = con.prepareStatement(query);
-            pst.setString(1, verificaLogin);
+            pst.setString(1, MD5.stringHexa(MD5.gerarHash(verificaLogin, "MD5")));
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -87,7 +93,7 @@ public class ManterUsuarioDAO extends DAO {
         try {
             Usuario obj = new Usuario();
             abrirBanco();
-            String query = "SELECT " + idUsuario + ", " + nome + " FROM "
+            String query = "SELECT " + idUsuario + " FROM "
                     + nomeTabela + ""
                     + " WHERE " + login + " = ? AND " + senha + " = ?";
             pst = con.prepareStatement(query);
@@ -97,7 +103,6 @@ public class ManterUsuarioDAO extends DAO {
             //Retornar esses dados para criar Session
             while (rs.next()) {
                 obj.setIdUsuario(rs.getInt(idUsuario));
-                obj.setNome(rs.getString(nome));
                 return obj;
             }
             fecharBanco();
@@ -126,7 +131,7 @@ public class ManterUsuarioDAO extends DAO {
         }
         return null;
     }
-    
+
     public Usuario pesquisar(int id) throws Exception {
         try {
             Usuario userbean = new Usuario();
@@ -139,7 +144,6 @@ public class ManterUsuarioDAO extends DAO {
             if (rs.next()) {
                 userbean.setIdUsuario(rs.getInt(idUsuario));
                 userbean.setLogin(rs.getString(login));
-                userbean.setNome(rs.getString(nome));
                 return userbean;
             }
             fecharBanco();

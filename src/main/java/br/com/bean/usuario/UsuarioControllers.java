@@ -46,8 +46,7 @@ public class UsuarioControllers extends HttpServlet {
                 Usuario permissao = dao.verificarAcesso(user);
 
                 idLogin = permissao.getIdUsuario();
-                nomeUsuarioLogado = permissao.getNome();
-
+                // aqui entra o nome do cliente para aparecer no navbar
             } catch (SQLException e) {
                 e.printStackTrace();
 

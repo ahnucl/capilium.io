@@ -31,11 +31,11 @@
             </li>-->
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <li class="nav-item dropdown ">
+            <li class="nav-item dropdown " >
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="fa fa-user fa-fw"></span><%= session.getAttribute("nomeUsuarioLogado")%>
                 </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="#"><span class="fa fa-pencil fa-fw"></span>Atualizar dados</a>
                     <a class="dropdown-item" href="#"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
                     <div class="dropdown-divider"></div>

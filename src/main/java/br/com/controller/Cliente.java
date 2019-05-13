@@ -1,9 +1,18 @@
 package br.com.controller;
 
-public class Cliente extends Usuario{
-   private int idCliente;
-   private String telefone,email,cpf;
-   private Usuario usuario;
+public class Cliente extends Usuario {
+
+    private int idCliente;
+    private String nome, telefone, email, cpf;
+    private Usuario usuario;
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
     public int getIdCliente() {
         return idCliente;
@@ -48,13 +57,16 @@ public class Cliente extends Usuario{
     public Cliente() {
     }
 
-    public Cliente(int idCliente, String telefone, String email, String cpf, Usuario usuario, int idUsuario, String nome, String login, String senha) {
-        super(idUsuario, nome, login, senha);
+    public Cliente(int idCliente, String nome, String telefone, String email, String cpf, Usuario usuario, int idUsuario, String login, String senha) {
+        super(idUsuario, login, senha);
         this.idCliente = idCliente;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.cpf = cpf;
         this.usuario = usuario;
     }
-  
+
+    
+
 }

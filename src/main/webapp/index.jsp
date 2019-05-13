@@ -4,13 +4,15 @@
     <div class="container" style="margin-top: 4em">
         <%
             String msg = "";
+            String verde = "";
             msg = (String) request.getAttribute("msg"); // Mensagem de aviso ou validaçõe que vem da servlets
+            verde = (String) request.getAttribute("verde"); // Mensagem de aviso ou validaçõe que vem da servlets
+            
             boolean show = (msg == null || msg.isEmpty()) ? false : true;
-
             if (show) {
         %>
 
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <div <%=(verde == null || verde.isEmpty()) ? "class='alert alert-danger alert-dismissible fade show'" : "class='alert alert-success alert-dismissible fade show'"%> role="alert">
             <strong><%= msg%></strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
