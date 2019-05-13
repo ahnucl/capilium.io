@@ -71,8 +71,8 @@
                     <td><%=funcionario.getMatricula()%></td>
                     <td><%=funcionario.getNome()%></td>
                     <td class="actions">
-                        <a class="btn btn-outline-success btn-xs" href="form-funcionario?view=1"><span class="fa fa-eye fa-fw"></span></a>
-                        <a class="btn btn-outline-warning btn-xs" href="form-funcionario?alt=1"><span class="fa fa-pencil fa-fw"></span></a>
+                        <!--<a class="btn btn-outline-success btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>-->
+                        <a class="btn btn-outline-warning btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
                         <a class="delete btn btn-outline-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal"><span class="fa fa-trash-o fa-fw"></span></a>
                     </td>
                 </tr>

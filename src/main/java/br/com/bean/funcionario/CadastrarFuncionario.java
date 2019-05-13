@@ -32,10 +32,11 @@ public class CadastrarFuncionario extends HttpServlet {
 
             func.setNome(request.getParameter("nome"));
             func.setMatricula(request.getParameter("matricula"));
+            func.setIdFuncionario(0); // Objeto não existe na base
 
             ManterFuncionarioDAO dao = new ManterFuncionarioDAO();
 
-            if (dao.verificaMatriculaExistente(func.getMatricula())) {
+            if (dao.verificaMatriculaExistente(func.getMatricula(),func.getIdFuncionario())) {
                 request.setAttribute("msg", "Matricula informada já está em uso!!!");
                 request.getRequestDispatcher("form-funcionario.jsp").forward(request, response);
             } else {
