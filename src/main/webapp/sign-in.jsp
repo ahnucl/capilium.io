@@ -18,7 +18,7 @@
             }
         %>
         <h3>Cadastro</h3>
-
+        <hr class="my-2">
         <form method="POST" action="CadastrarCliente">
             <h4>Dados Pessoais</h4>
             <div class="form-row">
@@ -36,7 +36,7 @@
                 </div>
                 <div class="form-group col-md-6">
                     <label>CPF</label>
-                    <input type="text" name="CPF" class="mascara-cpf form-control" id="inputCPF" placeholder="000.000.000-00" maxlength="14" required>
+                    <input type="text" name="cpf" class="mascara-cpf form-control" id="inputCPF" placeholder="000.000.000-00" maxlength="14" required>
                 </div>
             </div>
             <h4>Dados de acesso</h4>

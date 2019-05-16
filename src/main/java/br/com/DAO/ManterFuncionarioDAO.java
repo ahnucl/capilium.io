@@ -146,14 +146,16 @@ public class ManterFuncionarioDAO extends DAO {
         return null;
     }
 
-    public boolean verificaMatriculaExistente(String verificaMatricula) throws Exception {
+    public boolean verificaMatriculaExistente(String verificaMatricula, int idFuncionario) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) valor "
                     + "FROM " + nomeTabela + " "
-                    + "WHERE " + matricula + " = ?";
+                    + "WHERE " + matricula + " = ?"
+                    + "AND" + idFuncionario + " != ?";
             pst = con.prepareStatement(query);
             pst.setString(1, verificaMatricula);
+            pst.setInt(2, idFuncionario);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {

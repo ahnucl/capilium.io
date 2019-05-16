@@ -35,8 +35,9 @@ public class DeletarServico extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            
             ManterServicoDAO dao = new ManterServicoDAO();
-            dao.deletar(Integer.valueOf(request.getParameter("id")));
+            dao.deletar(Integer.valueOf(request.getParameter("idServico")));
             
             request.setAttribute("msg", "Exclusão realizada com sucesso");
             RequestDispatcher rd = request.getRequestDispatcher("all-servico.jsp");

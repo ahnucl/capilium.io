@@ -44,8 +44,15 @@ public class UsuarioControllers extends HttpServlet {
 
                 ManterUsuarioDAO dao = new ManterUsuarioDAO();
                 Usuario permissao = dao.verificarAcesso(user);
-
+               
                 idLogin = permissao.getIdUsuario();
+                
+                if(!dao.tipoUsuario(permissao.getIdUsuario())){//saber qual é o tipo do cliente
+                    nomeUsuarioLogado = "Administrador";
+                }else{
+                    nomeUsuarioLogado = dao.nomeUsuario(permissao.getIdUsuario());
+                }
+                
                 // aqui entra o nome do cliente para aparecer no navbar
             } catch (SQLException e) {
                 e.printStackTrace();

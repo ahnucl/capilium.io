@@ -3,8 +3,7 @@
 <body>
     <%@include file="util/navbar-in.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
-        <%
-            String msg = "";
+         <%   String msg = "";
             msg = (String) request.getAttribute("msg");
             boolean show = (msg == null || msg.isEmpty()) ? false : true;
             if (show) {
@@ -18,17 +17,34 @@
         <%
             }
         %>
+        
+        <% // Recuperando valores do objeto para o formulário
+            String matricula = "";
+            String nome = "";
+            String idFuncionario = "";
+            
+            if (request.getAttribute("matricula")!= null) {
+                matricula = (String) request.getAttribute("matricula"); 
+                nome = (String) request.getAttribute("nome");
+                idFuncionario = (String) request.getAttribute("idFuncionario");
+            }   
+            
+        %>
         <h3>Cadastro de Funcionario</h3>
 
-        <form method="POST" action="CadastrarFuncionario">
+        <form method="POST" <%= matricula.isEmpty()||matricula==null ? "action='CadastrarFuncionario'":"action='EditarFuncionario'" %> >
             <div class="form-row">
                 <div class="form-group col-md-6">
+                    <input type="text" name="idFuncionario" class="form-control" id="idFuncionario" hidden 
+                           <%= idFuncionario.isEmpty()||idFuncionario==null ? "":"value='"+idFuncionario+"'" %> >
                     <label for="inputEmail4">Matricula</label>
-                    <input type="text" name="matricula" class="form-control" id="inputMatricula" placeholder="Matricula" maxlength="25" required>
+                    <input type="text" name="matricula" class="form-control" id="inputMatricula" placeholder="Matricula" maxlength="25" required
+                           <%= matricula.isEmpty()||matricula==null ? "":"value='"+matricula+"'" %> >
                 </div>
                 <div class="form-group col-md-6">
                     <label for="inputPassword4">Nome Completo</label>
-                    <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Digite o nome" maxlength="100" required>
+                    <input type="text" name="nome" class="form-control" id="inputNome" placeholder="Digite o nome" maxlength="100" required
+                           <%= nome.isEmpty()||nome==null ? "":"value='"+nome+"'" %> >
                 </div>
                 <div class="text-center form-group col-md-12">
                     <button type="submit" class="btn btn-outline-primary"><span class="fa fa-check-square-o fa-fw"></span>Salvar</button>

@@ -35,13 +35,16 @@
                             <div class="form-label-group pt-2">
                                 <input type="password" id="inputSenha" name="senha" class="form-control" placeholder="Digite sua senha" required>
                             </div>
-                            <hr class="my-4">
-
-                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit"><span class="fa fa-sign-in fa-fw"></span>Entrar</button>
+                            <hr class="my-2">
+                            <div class="pb-3 text-right">
+                                <a  href="esqueciSenha.jsp">Esqueceu sua senha?</a>
+                            </div>
+                            <button class=" btn btn-lg btn-primary btn-block text-uppercase" type="submit"><span class="fa fa-sign-in fa-fw"></span>Entrar</button>
                         </form>
                     </div>
                 </div>
             </div>
+            
         </div>
     </div>
 </body>
