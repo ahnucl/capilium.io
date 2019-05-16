@@ -40,6 +40,7 @@
         <servlet-name>EditarFuncionario</servlet-name>
         <servlet-class>br.com.bean.funcionario.EditarFuncionario</servlet-class>
     </servlet>
+<<<<<<< HEAD
     <servlet>
         <servlet-name>BuscarServico</servlet-name>
         <servlet-class>br.com.bean.servico.BuscarServico</servlet-class>
@@ -68,6 +69,8 @@
         <servlet-name>EditarUsuario</servlet-name>
         <servlet-class>br.com.bean.usuario.EditarUsuario</servlet-class>
     </servlet>
+=======
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
     <servlet-mapping>
         <servlet-name>WebjarsServlet</servlet-name>
         <url-pattern>/webjars/*</url-pattern>
@@ -104,6 +107,7 @@
         <servlet-name>EditarFuncionario</servlet-name>
         <url-pattern>/EditarFuncionario</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
     <servlet-mapping>
         <servlet-name>BuscarServico</servlet-name>
         <url-pattern>/BuscarServico</url-pattern>
@@ -132,6 +136,8 @@
         <servlet-name>EditarUsuario</servlet-name>
         <url-pattern>/EditarUsuario</url-pattern>
     </servlet-mapping>
+=======
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
     <session-config>
         <session-timeout>
             30
