@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package br.com.bean.servico;
 
 import br.com.DAO.ManterServicoDAO;
+import br.com.controller.Servico;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author lukka
- */
-public class DeletarServico extends HttpServlet {
+public class EditarServico extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +26,19 @@ public class DeletarServico extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
+            ManterServicoDAO servicoDAO = new ManterServicoDAO();
+            Servico servico = new Servico();
             
-            ManterServicoDAO dao = new ManterServicoDAO();
-            dao.deletar(Integer.valueOf(request.getParameter("idServico")));
+            servico.setIdServico(Integer.valueOf(request.getParameter("idServico")));
+            servico.setDescricao(request.getParameter("descricao"));
+            servico.setSuspenso(Boolean.valueOf(request.getParameter("tempoMedioAtendimento")));
+            servico.setTempoMedioAtendimento(request.getParameter("tempoMedioAtendimento"));
+            servico.setValor(Float.valueOf(request.getParameter("valor")));
             
-            request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("all-servico.jsp");
-            rd.forward(request, response);
+            servicoDAO.alterar(servico);
+            
+            request.setAttribute("msg", "Alterado com sucesso!!!");
+            request.getRequestDispatcher("all-servico.jsp").forward(request, response);
         }
     }
 
@@ -60,7 +57,7 @@ public class DeletarServico extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DeletarServico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarServico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -78,7 +75,7 @@ public class DeletarServico extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DeletarServico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarServico.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

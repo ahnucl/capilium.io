@@ -93,13 +93,13 @@ public class ManterServicoDAO extends DAO {
         }
     }
 
-    public Servico pesquisar(Servico servico) throws Exception {
+    public Servico pesquisar(int id) throws Exception {
         try {
             Servico servicobean = new Servico();
             abrirBanco();
             String query = "SELECT * FROM " + nomeTabela + " WHERE " + idServico + " = ?";
             pst = con.prepareStatement(query);
-            pst.setInt(1, servico.getIdServico());
+            pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {

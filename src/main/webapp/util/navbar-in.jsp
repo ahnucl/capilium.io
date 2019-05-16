@@ -36,12 +36,40 @@
                     <span class="fa fa-user fa-fw"></span><%= session.getAttribute("nomeUsuarioLogado")%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+<<<<<<< HEAD
+                    <a class="dropdown-item" href="form-cliente.jsp"><span class="fa fa-pencil fa-fw"></span>Editar meus dados</a>
+                    <a class="dropdown-item" href="#"  href="#" data-toggle="modal" data-target="#delete-modal-usuario"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
+=======
                     <a class="dropdown-item" href="#"><span class="fa fa-pencil fa-fw"></span>Atualizar dados</a>
                     <a class="dropdown-item" href="#"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="util/logoff.jsp"><span class="fa fa-sign-out fa-fw"></span>sair</a>
                 </div>
             </li>
         </ul>
     </div>
+
 </nav>
+<div class="modal fade" id="delete-modal-usuario" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLabel">Excluir conta</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+            </div>
+            <div class="modal-body">
+                <strong >Deseja realmente prosseguir?</strong></br>
+                Após a confirmação essa ação não poderá ser desfeita?
+            </div>
+            <form method="POST" action="ExcluirUsuario">
+                <div class="modal-footer">
+                    <input type="hidden" name="idUsuario" id="usuarioId" 
+                           <%="value='" + (String) session.getAttribute("idUsuario") + "'"%>/>
+                    <button type="submit" class="btn btn-primary">Sim</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">N&atilde;o</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

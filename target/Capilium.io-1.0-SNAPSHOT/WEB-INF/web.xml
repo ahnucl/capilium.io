@@ -40,6 +40,37 @@
         <servlet-name>EditarFuncionario</servlet-name>
         <servlet-class>br.com.bean.funcionario.EditarFuncionario</servlet-class>
     </servlet>
+<<<<<<< HEAD
+    <servlet>
+        <servlet-name>BuscarServico</servlet-name>
+        <servlet-class>br.com.bean.servico.BuscarServico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarServico</servlet-name>
+        <servlet-class>br.com.bean.servico.CadastrarServico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarServico</servlet-name>
+        <servlet-class>br.com.bean.servico.EditarServico</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BuscarCliente</servlet-name>
+        <servlet-class>br.com.bean.cliente.BuscarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarCliente</servlet-name>
+        <servlet-class>br.com.bean.cliente.EditarCliente</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ExcluirUsuario</servlet-name>
+        <servlet-class>br.com.bean.usuario.ExcluirUsuario</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditarUsuario</servlet-name>
+        <servlet-class>br.com.bean.usuario.EditarUsuario</servlet-class>
+    </servlet>
+=======
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
     <servlet-mapping>
         <servlet-name>WebjarsServlet</servlet-name>
         <url-pattern>/webjars/*</url-pattern>
@@ -76,6 +107,37 @@
         <servlet-name>EditarFuncionario</servlet-name>
         <url-pattern>/EditarFuncionario</url-pattern>
     </servlet-mapping>
+<<<<<<< HEAD
+    <servlet-mapping>
+        <servlet-name>BuscarServico</servlet-name>
+        <url-pattern>/BuscarServico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarServico</servlet-name>
+        <url-pattern>/CadastrarServico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarServico</servlet-name>
+        <url-pattern>/EditarServico</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BuscarCliente</servlet-name>
+        <url-pattern>/BuscarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarCliente</servlet-name>
+        <url-pattern>/EditarCliente</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ExcluirUsuario</servlet-name>
+        <url-pattern>/ExcluirUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditarUsuario</servlet-name>
+        <url-pattern>/EditarUsuario</url-pattern>
+    </servlet-mapping>
+=======
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
     <session-config>
         <session-timeout>
             30

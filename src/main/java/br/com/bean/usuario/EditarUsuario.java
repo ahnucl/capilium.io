@@ -1,26 +1,17 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package br.com.bean.servico;
+package br.com.bean.usuario;
 
-import br.com.DAO.ManterServicoDAO;
+import br.com.DAO.ManterUsuarioDAO;
+import br.com.controller.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author lukka
- */
-public class DeletarServico extends HttpServlet {
+public class EditarUsuario extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,13 +26,27 @@ public class DeletarServico extends HttpServlet {
             throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            ManterServicoDAO dao = new ManterServicoDAO();
-            dao.deletar(Integer.valueOf(request.getParameter("idServico")));
-            
-            request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("all-servico.jsp");
-            rd.forward(request, response);
+            ManterUsuarioDAO userDAO = new ManterUsuarioDAO();
+            Usuario user = new Usuario();
+
+            if (request.getParameter("senha") == request.getParameter("csenha") || request.getParameter("csenha").equals(request.getParameter("senha"))) {// validar se as senhas são iguais
+                user.setLogin(request.getParameter("login"));
+                user.setSenha(request.getParameter("senha"));
+                if (userDAO.verificaLoginExistente(request.getParameter("login"))) {
+                    userDAO.esqueciSenha(user);
+                    request.setAttribute("verde", "OK");//alterar a cor do alerta
+                    request.setAttribute("msg", "Senha alterada com sucesso!!");
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                } else {
+                    request.setAttribute("msg", "O usuário informado não existe!!!");
+                    request.getRequestDispatcher("esqueciSenha.jsp").forward(request, response);
+                }
+
+            } else {
+                request.setAttribute("msg", "Senhas informadas não conferem!!!");
+                request.getRequestDispatcher("esqueciSenha.jsp").forward(request, response);
+            }
+
         }
     }
 
@@ -60,7 +65,7 @@ public class DeletarServico extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DeletarServico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -78,7 +83,7 @@ public class DeletarServico extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (Exception ex) {
-            Logger.getLogger(DeletarServico.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(EditarUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

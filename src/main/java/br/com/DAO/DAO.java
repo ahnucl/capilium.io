@@ -13,8 +13,13 @@ public class DAO {
     //Dados para configuração do banco
     private static String ip = "localhost";
     private static String nomeBanco = "capillium";
+<<<<<<< HEAD
+    private static String user = "web_app";
+    private static String senha = "1234";
+=======
     private static String user = "root";
     private static String senha = "";
+>>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
 
     Connection con;
     PreparedStatement pst;

@@ -1,6 +1,6 @@
 <%@include file="util/header.jsp" %>
 <body>
-    <%@include file="util/navbar-out.jsp" %>
+    <%@include file="util/navbar-in.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
         <%
             String msg = "";
@@ -17,7 +17,7 @@
         <%
             }
         %>
-        <h3>Cadastro</h3>
+        <h3>Editar</h3>
         <hr class="my-2">
         <form method="POST" action="CadastrarCliente">
             <h4>Dados Pessoais</h4>

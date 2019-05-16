@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class ManterUsuarioDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o nome da coluna na tabela*/
+     para assim ficar mais facil se mudar o nome da coluna na tabela*/
     private static String nomeTabela = "Usuario"; //Nome da tabela
     private static String idUsuario = "idUsuario";//PK da tabela
     private static String login = "login";
@@ -25,13 +25,13 @@ public class ManterUsuarioDAO extends DAO {
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
             pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
             pst.execute();
-            
+
             // buscar o ultimo ID na cadastrado na tabela durante a mesma conexão
             String queryReturnId = "SELECT LAST_INSERT_ID() as id FROM " + nomeTabela;
             pst = con.prepareStatement(queryReturnId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
-                return (int)rs.getInt("id");
+                return (int) rs.getInt("id");
             }
             fecharBanco();
         } catch (Exception e) {
@@ -40,11 +40,11 @@ public class ManterUsuarioDAO extends DAO {
         return 0;
     }
 
-    public void deletar(Usuario user) throws Exception {
+    public void deletar(int id) throws Exception {
         abrirBanco();
         String query = "DELETE FROM " + nomeTabela + " WHERE " + idUsuario + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
-        pst.setInt(1, user.getIdUsuario());
+        pst.setInt(1, id);
         pst.execute();
         fecharBanco();
     }
@@ -60,6 +60,24 @@ public class ManterUsuarioDAO extends DAO {
             pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
 
             pst.setInt(3, user.getIdUsuario());
+            pst.execute();
+            fecharBanco();
+
+        } catch (Exception e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+    }
+
+    public void esqueciSenha(Usuario user) throws Exception {
+        try {
+            abrirBanco();
+            String query = "UPDATE " + nomeTabela + " "
+                    + "SET " + senha + " = ?"
+                    + "WHERE " + login + " = ?;";
+            pst = con.prepareStatement(query);
+            pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
+
+            pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
             pst.execute();
             fecharBanco();
 
@@ -112,18 +130,41 @@ public class ManterUsuarioDAO extends DAO {
         return null;
     }
 
-    public String tipoUsuario(Usuario user) throws Exception {
+    public boolean tipoUsuario(int id) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) AS valor FROM "
                     + "Cliente"
                     + " WHERE " + idUsuario + " = ?";
             pst = con.prepareStatement(query);
-            pst.setInt(1, user.getIdUsuario());
+            pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             //Retornar esse dado para saber o tipo de usuario
             if (rs.next()) {
-                return rs.getInt("valor") == 1 ? "funcionario" : "cliente";
+                return rs.getBoolean("valor");
+            }
+            fecharBanco();
+        } catch (Exception e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+        return false;
+    }
+    
+    public String nomeUsuario(int id) throws Exception {
+        try {
+            abrirBanco();
+            String query = "SELECT c.nome AS nome FROM "
+                    + "Cliente AS c "
+                    + "INNER JOIN "
+                    + nomeTabela + " AS u "
+                    + "ON u." + idUsuario + " = c.idUsuario "
+                    + "WHERE " + idUsuario + " = ?";
+            pst = con.prepareStatement(query);
+            pst.setInt(1, id);
+            ResultSet rs = pst.executeQuery();
+            //Retornar esse dado para saber o tipo de usuario
+            if (rs.next()) {
+                return rs.getString("nome");
             }
             fecharBanco();
         } catch (Exception e) {
@@ -131,7 +172,7 @@ public class ManterUsuarioDAO extends DAO {
         }
         return null;
     }
-
+    
     public Usuario pesquisar(int id) throws Exception {
         try {
             Usuario userbean = new Usuario();
