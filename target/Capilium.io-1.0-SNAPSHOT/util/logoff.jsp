@@ -16,7 +16,7 @@
             
             //FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
            // request.getRequestDispatcher("index.jsp").forward(request, response);;
-            response.sendRedirect("/capilium.io/index.jsp");
+            response.sendRedirect("/Capilium.io/index.jsp");
         %>
     </body>
 </html>

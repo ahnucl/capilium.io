@@ -12,7 +12,7 @@
             
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
-            <a class="btn btn-success btn-xs" href="sign-in.jsp"><span class="fa fa-user-plus fa-fw pr-3"></span>Cadastrar-se</a>
+            <a class="btn btn-success btn-xs" href="client/sign-in.jsp"><span class="fa fa-user-plus fa-fw pr-3"></span>Cadastrar-se</a>
         </ul>
     </div>
 </nav>
