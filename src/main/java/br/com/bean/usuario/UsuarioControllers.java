@@ -47,13 +47,8 @@ public class UsuarioControllers extends HttpServlet {
                
                 idLogin = permissao.getIdUsuario();
                 
-                if(!dao.tipoUsuario(permissao.getIdUsuario())){//saber qual é o tipo do cliente
-                    nomeUsuarioLogado = "Administrador";
-                }else{
-                    nomeUsuarioLogado = dao.nomeUsuario(permissao.getIdUsuario());
-                }
-                
-                // aqui entra o nome do cliente para aparecer no navbar
+                nomeUsuarioLogado = (String) dao.nomeUsuario(permissao.getIdUsuario());// nome do cliente para aparecer no navbar
+            
             } catch (SQLException e) {
                 e.printStackTrace();
 
@@ -64,7 +59,11 @@ public class UsuarioControllers extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("nomeUsuarioLogado", nomeUsuarioLogado);
                 session.setAttribute("idUsuario", Integer.toString(idLogin));
-                request.getRequestDispatcher("home.jsp").forward(request, response);
+                if(nomeUsuarioLogado.equals("Administrador") || nomeUsuarioLogado == "Administrador"){
+                    request.getRequestDispatcher("user/home.jsp").forward(request, response);
+                }else{
+                    request.getRequestDispatcher("client/home.jsp").forward(request, response);
+                }
             } else {
                 request.setAttribute("msg", "Usuário ou senha estão incorretos!!");
                 request.getRequestDispatcher("index.jsp").forward(request, response);
