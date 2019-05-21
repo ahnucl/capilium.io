@@ -36,13 +36,8 @@
                     <span class="fa fa-user fa-fw"></span><%= session.getAttribute("nomeUsuarioLogado")%>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-<<<<<<< HEAD
                     <a class="dropdown-item" href="form-cliente.jsp"><span class="fa fa-pencil fa-fw"></span>Editar meus dados</a>
                     <a class="dropdown-item" href="#"  href="#" data-toggle="modal" data-target="#delete-modal-usuario"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
-=======
-                    <a class="dropdown-item" href="#"><span class="fa fa-pencil fa-fw"></span>Atualizar dados</a>
-                    <a class="dropdown-item" href="#"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
->>>>>>> d226d71dd23268a76ddb19095b1cbc514d80c3ec
                     <div class="dropdown-divider"></div>
                     <a class="dropdown-item" href="util/logoff.jsp"><span class="fa fa-sign-out fa-fw"></span>sair</a>
                 </div>
