@@ -130,7 +130,7 @@ public class ManterUsuarioDAO extends DAO {
         return null;
     }
 
-    public boolean tipoUsuario(int id) throws Exception {
+    /*public boolean tipoUsuario(int id) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) AS valor FROM "
@@ -148,23 +148,31 @@ public class ManterUsuarioDAO extends DAO {
             System.out.println("Erro " + e.getMessage());
         }
         return false;
-    }
+    }*/
     
     public String nomeUsuario(int id) throws Exception {
         try {
             abrirBanco();
-            String query = "SELECT c.nome AS nome FROM "
+            String query = "SELECT "
+                    /* + "CASE " 
+                       + "WHEN c.nome IS NULL THEN 'Administrador' "
+                        + "WHEN LENGTH(IFNULL(c.nome,'')) = 0 THEN 'Administrador' "
+                        + "WHEN LEN(CAST(c.nome AS VARCHAR(MAX))) = 0 THEN 'Administrador' "
+                        + "ELSE c.nome "
+                    + "END "*/
+                    + "c.nome AS nome, COUNT(c.nome) AS valor FROM "
                     + "Cliente AS c "
                     + "INNER JOIN "
                     + nomeTabela + " AS u "
-                    + "ON u." + idUsuario + " = c.idUsuario "
-                    + "WHERE " + idUsuario + " = ?";
+                    + "ON c." + idUsuario + " = u." + idUsuario
+                    + " WHERE u." + idUsuario + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
             //Retornar esse dado para saber o tipo de usuario
             if (rs.next()) {
-                return rs.getString("nome");
+                return rs.getInt("valor") == 0 ? "Administrador" : rs.getString("nome");
+                //return rs.getString("nome");
             }
             fecharBanco();
         } catch (Exception e) {
