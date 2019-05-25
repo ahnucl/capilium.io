@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
     <a class="navbar-brand" href="index.jsp">
-        <img src="img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+        <img src="/capilium.io/img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
         Capillium.io
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

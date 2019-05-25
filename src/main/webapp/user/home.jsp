@@ -1,7 +1,7 @@
-<%@include file="util/header.jsp" %> 
-<%@include file="util/navbar-in.jsp" %>
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %> 
+<%@include file="../util/navbar-in-user.jsp" %>
+<%@include file="../util/session-user.jsp"%> 
     <body>
         
     </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

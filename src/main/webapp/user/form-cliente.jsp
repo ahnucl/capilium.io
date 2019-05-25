@@ -1,6 +1,7 @@
-<%@include file="util/header.jsp" %>
+<%@include file="../util/header.jsp" %>
 <body>
-    <%@include file="util/navbar-in-client.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
+    <%--<%@include file="../util/navbar-in-client.jsp" %>--%>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
         <%
             String msg = "";
@@ -19,7 +20,7 @@
         %>
         <h3>Editar</h3>
         <hr class="my-2">
-        <form method="POST" action="CadastrarCliente">
+        <form method="POST" action="../CadastrarCliente">
             <h4>Dados Pessoais</h4>
             <div class="form-row">
                 <div class="form-group col-md-6">
@@ -62,5 +63,5 @@
     </div>
 </body>
  
-<%@include file="util/footer.jsp" %> 
-<%@include file="util/mascara-input.jsp" %>
+<%@include file="../util/footer.jsp" %> 
+<%@include file="../util/mascara-input.jsp" %>

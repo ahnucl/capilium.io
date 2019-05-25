@@ -37,7 +37,7 @@
                             </div>
                             <hr class="my-2">
                             <div class="pb-3 text-right">
-                                <a  href="esqueciSenha.jsp">Esqueceu sua senha?</a>
+                                <a  href="client/esqueciSenha.jsp">Esqueceu sua senha?</a>
                             </div>
                             <button class=" btn btn-lg btn-primary btn-block text-uppercase" type="submit"><span class="fa fa-sign-in fa-fw"></span>Entrar</button>
                         </form>

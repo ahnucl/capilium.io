@@ -3,10 +3,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.com.controller.Funcionario"%>
 <%@page import="br.com.DAO.ManterFuncionarioDAO"%>
-<%@include file="util/header.jsp" %> 
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %> 
+<%@include file="../util/session-user.jsp"%> 
 <body>
-    <%@include file="util/navbar-in-user.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
         
 
@@ -41,7 +41,7 @@
                 </div>
             </div>
             <div class="text-right col-sm-3 pr-4">
-                <a href="form-funcionario.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar funcionario</a>
+                <a href="/capilium.io/user/form-funcionario.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar funcionario</a>
             </div>
         </div> 
 
@@ -72,7 +72,7 @@
                     <td><%=funcionario.getNome()%></td>
                     <td class="actions">
                         <!--<a class="btn btn-outline-success btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>-->
-                        <a class="btn btn-outline-warning btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
+                        <a class="btn btn-outline-warning btn-xs" <%="href='/capilium.io/BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
                         <a class="delete btn btn-outline-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal"><span class="fa fa-trash-o fa-fw"></span></a>
                     </td>
                 </tr>
@@ -109,4 +109,4 @@
         </div>
     </div>
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

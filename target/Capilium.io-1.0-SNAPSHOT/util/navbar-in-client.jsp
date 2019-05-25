@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
-    <a class="navbar-brand" href="home.jsp">
-        <img src="img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+    <a class="navbar-brand" href="/capilium.io/client/home.jsp">
+        <img src="/capilium.io/img/logo.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
         Capillium.io
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -10,13 +10,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav bd-navbar-nav flex-row">
             <li class="nav-item">
-                <a class="nav-link" href="all-cliente.jsp">Clientes <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/capilium.io/user/all-cliente.jsp">Clientes <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="all-funcionario.jsp">Funcionario</a>
+                <a class="nav-link" href="/capilium.io/user/all-funcionario.jsp">Funcionario</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="all-servico.jsp">Serviços</a>
+                <a class="nav-link" href="/capilium.io/user/all-servico.jsp">Serviços</a>
             </li>
             <!--<li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +39,7 @@
                     <a class="dropdown-item" href="form-cliente.jsp"><span class="fa fa-pencil fa-fw"></span>Editar meus dados</a>
                     <a class="dropdown-item" href="#"  href="#" data-toggle="modal" data-target="#delete-modal-usuario"><span class="fa fa-trash-o fa-fw"></span>Excluir conta</a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="util/logoff.jsp"><span class="fa fa-sign-out fa-fw"></span>sair</a>
+                    <a class="dropdown-item" href="/capilium.io/util/logoff.jsp"><span class="fa fa-sign-out fa-fw"></span>sair</a>
                 </div>
             </li>
         </ul>

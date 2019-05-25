@@ -19,7 +19,7 @@
         %>
         <h3>Esqueci minha senha</h3>
         <hr class="my-2">
-        <form method="POST" action="EditarUsuario">
+        <form method="POST" action="../EditarUsuario">
             <h4>Dados de acesso</h4>
             <div class="form-row">
                 <div class="form-group col-md-4">

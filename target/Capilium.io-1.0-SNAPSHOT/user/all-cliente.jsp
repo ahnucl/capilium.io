@@ -1,10 +1,10 @@
 <%@page import="br.com.controller.Servico"%>
 <%@page import="br.com.DAO.ManterServicoDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@include file="util/header.jsp" %> 
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %> 
+<%@include file="../util/session-user.jsp"%> 
 <body>
-    <%@include file="util/navbar-in-user.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
         
 
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="text-right col-sm-3 pr-4">
-                <a href="form-servico.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar Cliente</a>
+                <a href="/capilium.io/user/form-cliente.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar Cliente</a>
             </div>
         </div> 
 
@@ -109,4 +109,4 @@
         </div>
     </div>
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

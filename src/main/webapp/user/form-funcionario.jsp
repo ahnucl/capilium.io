@@ -1,7 +1,7 @@
-<%@include file="util/header.jsp" %>
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %>
+<%@include file="../util/session-user.jsp"%> 
 <body>
-    <%@include file="util/navbar-in-user.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
          <%   String msg = "";
             msg = (String) request.getAttribute("msg");
@@ -32,7 +32,7 @@
         %>
         <h3>Cadastro de Funcionario</h3>
 
-        <form method="POST" <%= matricula.isEmpty()||matricula==null ? "action='CadastrarFuncionario'":"action='EditarFuncionario'" %> >
+        <form method="POST" <%= matricula.isEmpty()||matricula==null ? "action='../CadastrarFuncionario'":"action='../EditarFuncionario'" %> >
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" name="idFuncionario" class="form-control" id="idFuncionario" hidden 
@@ -53,4 +53,4 @@
         </form>
     </div>
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

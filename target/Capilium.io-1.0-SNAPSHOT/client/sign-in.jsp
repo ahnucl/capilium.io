@@ -19,7 +19,7 @@
         %>
         <h3>Cadastro</h3>
         <hr class="my-2">
-        <form method="POST" action="CadastrarCliente">
+        <form method="POST" action="../CadastrarCliente">
             <h4>Dados Pessoais</h4>
             <div class="form-row">
                 <div class="form-group col-md-6">
