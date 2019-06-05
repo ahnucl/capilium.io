@@ -32,7 +32,7 @@ public class DeletarFuncionario extends HttpServlet {
             dao.deletar(Integer.valueOf(request.getParameter("idFuncionario")));
             
             request.setAttribute("msg", "Exclusão realizada com sucesso!!!");
-            RequestDispatcher rd = request.getRequestDispatcher("all-funcionario.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("/user/all-funcionario.jsp");
             rd.forward(request, response);
         }
     }

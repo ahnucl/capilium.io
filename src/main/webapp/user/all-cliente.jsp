@@ -1,10 +1,9 @@
 <%@page import="br.com.controller.Cliente"%>
 <%@page import="br.com.DAO.ManterClienteDAO"%>
 <%@page import="java.util.ArrayList"%>
-<%@include file="util/header.jsp" %> 
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %> 
 <body>
-    <%@include file="util/navbar-in.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
         
 
@@ -12,7 +11,7 @@
             session.removeAttribute("id");//limpando a session
             
             String msg = "";
-            msg = (String) request.getAttribute("msg"); // Mensagem de aviso ou validaÃ§Ãµe que vem da servlets
+            msg = (String) request.getAttribute("msg"); // Mensagem de aviso ou validaçõe que vem da servlets
             boolean show = (msg == null || msg.isEmpty()) ? false : true;
 
             if (show) {
@@ -39,19 +38,19 @@
                 </div>
             </div>
             <div class="text-right col-sm-3 pr-4">
-                <a href="form-cliente.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar Cliente</a>
+                <!--<a href="/capilium.io/user/form-cliente.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar Cliente</a>-->
             </div>
         </div> 
 
         <div class="table-responsive col-sm-12">
-            <h3>Cliente</h3>
+            <h3>Clientes</h3>
             <table class="table table-striped" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
                         <th>CPF</th>
                         <th>Nome</th>
                         <th>Telefone</th>
-                        <th class="actions">AÃ§Ãµes</th>
+                        <th class="actions">Ações</th>
                     </tr>
                 </thead>
                 <%
@@ -63,17 +62,17 @@
                     for (int i = 0; i < listaCliente.size(); i++) {
                         cliente = listaCliente.get(i);
                         /*Criar uma session para armazenar o valor do id 
-                        para realizar a exclusÃ£o ou alteraÃ§Ã£o do Cliente selecionado*/
+                        para realizar a exclusão ou alteração do cliente selecionado*/
                         session.setAttribute("id", String.valueOf(cliente.getIdCliente())); 
                 %>
                 <tr>
-                    <td><%=cliente.getCFP()%></td>
+                    <td class="mascara-cpf"><%=cliente.getCpf()%></td>
                     <td><%=cliente.getNome()%></td>
                     <td><%=cliente.getTelefone()%></td>
                     <td class="actions">
-                        <a class="btn btn-outline-success btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(cliente.getIdCliente())+"&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>
-                        <a class="btn btn-outline-warning btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(cliente.getIdCliente())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
-                        <a class="delete btn btn-outline-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal"><span class="fa fa-trash-o fa-fw"></span></a>
+                        <a class="btn btn-outline-success btn-xs" <%="href='/capilium.io/BuscarCliente?id="+String.valueOf(cliente.getIdCliente())+"&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>
+<!--                        <a class="btn btn-outline-warning btn-xs" <%="href='/capilium.io/BuscarCliente?id="+String.valueOf(cliente.getIdCliente())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
+                        <a class="delete btn btn-outline-danger btn-xs"  <%="href='/capilium.io/DeletarCliente?id="+String.valueOf(cliente.getIdCliente())+"'"%>> data-toggle="modal" data-target="#delete-modal" <span class="fa fa-trash-o fa-fw"></span></a>-->
                     </td>
                 </tr>
                 <%}
@@ -95,11 +94,11 @@
                 </div>
                 <div class="modal-body">
                     <strong >Deseja realmente prosseguir?</strong></br>
-                    ApÃ³s a confirmaÃ§Ã£o essa aÃ§Ã£o nÃ£o poderÃ¡ ser desfeita?
+                    Após a confirmação essa ação não poderá ser desfeita.
                 </div>
-                <form method="POST" action="DeletarCliente">
+                <form method="POST" <%="action='/capilium.io/DeletarCliente'"%>>
                     <div class="modal-footer">
-                        <input type="hidden" name="idCliente" id="clienteId" 
+                        <input type="hidden" name="id" id="clienteId" 
                                <%="value='" + String.valueOf(session.getAttribute("id")) + "'"%>/>
                         <button type="submit" class="btn btn-primary">Sim</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">N&atilde;o</button>
@@ -109,4 +108,5 @@
         </div>
     </div>
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 
+<%@include file="../util/mascara-input.jsp" %>

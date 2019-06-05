@@ -1,7 +1,6 @@
-<%@include file="util/header.jsp" %>
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %>
 <body>
-    <%@include file="util/navbar-in.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
          <%   String msg = "";
             msg = (String) request.getAttribute("msg");
@@ -30,15 +29,15 @@
             }   
             
         %>
-        <h3>Cadastro de Funcionario</h3>
+        <h3><%= matricula.isEmpty()||matricula==null ? "Cadastrar":"Editar"%> Funcionario</h3>
 
-        <form method="POST" <%= matricula.isEmpty()||matricula==null ? "action='CadastrarFuncionario'":"action='EditarFuncionario'" %> >
+        <form method="POST" <%= matricula.isEmpty()||matricula==null ? "action='../CadastrarFuncionario'":"action='EditarFuncionario'" %> >
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" name="idFuncionario" class="form-control" id="idFuncionario" hidden 
                            <%= idFuncionario.isEmpty()||idFuncionario==null ? "":"value='"+idFuncionario+"'" %> >
                     <label for="inputEmail4">Matricula</label>
-                    <input type="text" name="matricula" class="form-control" id="inputMatricula" placeholder="Matricula" maxlength="25" required
+                    <input type="text" name="matricula" class="form-control" id="inputMatricula" placeholder="Matricula" maxlength="8" required
                            <%= matricula.isEmpty()||matricula==null ? "":"value='"+matricula+"'" %> >
                 </div>
                 <div class="form-group col-md-6">
@@ -53,4 +52,4 @@
         </form>
     </div>
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

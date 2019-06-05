@@ -13,44 +13,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <!--<repositories>
-        
-        <repository>
-            <id>mvn-repository</id>
-            <url>http://mvnrepository.com/</url>
-        </repository>
-        
-        <repository>
-            <id>mysql</id>
-            <url>https://mvnrepository.com/artifact/mysql/mysql-connector-java</url>
-        </repository>
-
-        
-        <repository>
-            <id>mavensearch</id>
-            <url>http://www.mvnsearch.org/maven2</url>
-        </repository>
-
-        
-        <repository>
-            <id>google-repository</id>
-            <url>http://google-maven-repository.googlecode.com/svn/repository/</url>
-        </repository>
-
-        
-        <repository>
-            <id>bootstrap</id>
-            <url>https://mvnrepository.com/artifact/org.webjars/bootstrap</url>
-        </repository>
-    </repositories> -->
-    
     <dependencies>
-        <!--<dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.4.0</version>
-        </dependency>-->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>bootstrap</artifactId>
@@ -71,11 +34,6 @@
             <artifactId>webjars-servlet-2.x</artifactId>
             <version>1.1</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.1.1</version> 
-        </dependency>-->
         <dependency>
             <groupId>org.webjars</groupId>
             <artifactId>jquery</artifactId>

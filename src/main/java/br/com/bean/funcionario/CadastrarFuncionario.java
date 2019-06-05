@@ -38,12 +38,12 @@ public class CadastrarFuncionario extends HttpServlet {
 
             if (dao.verificaMatriculaExistente(func.getMatricula(),func.getIdFuncionario())) {
                 request.setAttribute("msg", "Matricula informada já está em uso!!!");
-                request.getRequestDispatcher("form-funcionario.jsp").forward(request, response);
+                request.getRequestDispatcher("user/form-funcionario.jsp").forward(request, response);
             } else {
                 dao.inserir(func);
 
                 request.setAttribute("msg", "Cadastrado realizado com sucesso!!!");
-                request.getRequestDispatcher("all-funcionario.jsp").forward(request, response);
+                request.getRequestDispatcher("user/all-funcionario.jsp").forward(request, response);
             }
         }
     }

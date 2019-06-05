@@ -9,20 +9,20 @@ public class ManterServicoDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
     para assim ficar mais facil se mudar o nome da coluna na tabela*/
-    private static String nomeTabela = "Servico"; //nome da tabela
-    private static String idServico = "idServico"; // PK da tablea
-    private static String descricao = "descricao";
-    private static String valor = "valor";
-    private static String suspenso = "suspenso";
-    private static String tempoMedioAtendimento = "tempoMedioAtendimento";
+    public static String NOME_TABELA_SERVICO = "Servico"; //nome da tabela
+    public static String ID_SERVICO = "idServico"; // PK da tablea
+    public static String DESCRICAO_SERVICO = "descricao";
+    public static String VALOR_SERVICO = "valor";
+    public static String SUSPENSO_SERVICO = "se_suspenso";
+    public static String TEMPO_MEDIO_ATENDIMENTO_SERVICO = "tempoMedioAtendimento";
 
     public void inserir(Servico servico) throws Exception {
         try {
             abrirBanco();
-            String query = "INSERT INTO " + nomeTabela + " "
-                    + "(" + idServico + ", " + descricao + ", "
-                    + valor + ", " + tempoMedioAtendimento + ", "
-                    + suspenso + ")"
+            String query = "INSERT INTO " + NOME_TABELA_SERVICO + " "
+                    + "(" + ID_SERVICO + ", " + DESCRICAO_SERVICO + ", "
+                    + VALOR_SERVICO + ", " + TEMPO_MEDIO_ATENDIMENTO_SERVICO + ", "
+                    + SUSPENSO_SERVICO + ")"
                     + "VALUES(NULL, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, servico.getDescricao());
@@ -40,17 +40,17 @@ public class ManterServicoDAO extends DAO {
         ArrayList<Servico> listaServico = new ArrayList<Servico>();
         try {
             abrirBanco();
-            String query = "SELECT * FROM " + nomeTabela + " ORDER BY(" + idServico + ")DESC LIMIT 0,5";
+            String query = "SELECT * FROM " + NOME_TABELA_SERVICO + " ORDER BY(" + ID_SERVICO + ")DESC LIMIT 0,5";
             pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             Servico servicobean;
             while (rs.next()) {
                 servicobean = new Servico();
-                servicobean.setIdServico(rs.getInt(idServico));
-                servicobean.setDescricao(rs.getString(descricao));
-                servicobean.setValor(rs.getFloat(valor));
-                servicobean.setSuspenso(rs.getBoolean(suspenso));
-                servicobean.setTempoMedioAtendimento(rs.getString(tempoMedioAtendimento));
+                servicobean.setIdServico(rs.getInt(ID_SERVICO));
+                servicobean.setDescricao(rs.getString(DESCRICAO_SERVICO));
+                servicobean.setValor(rs.getFloat(VALOR_SERVICO));
+                servicobean.setSuspenso(rs.getBoolean(SUSPENSO_SERVICO));
+                servicobean.setTempoMedioAtendimento(rs.getString(TEMPO_MEDIO_ATENDIMENTO_SERVICO));
                 listaServico.add(servicobean);
             }
             fecharBanco();
@@ -62,7 +62,7 @@ public class ManterServicoDAO extends DAO {
 
     public void deletar(int id) throws Exception {
         abrirBanco();
-        String query = "DELETE FROM " + nomeTabela + " WHERE " + idServico + " = ?";
+        String query = "DELETE FROM " + NOME_TABELA_SERVICO + " WHERE " + ID_SERVICO + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
         pst.setInt(1, id);
         pst.execute();
@@ -72,12 +72,12 @@ public class ManterServicoDAO extends DAO {
     public void alterar(Servico servico) throws Exception {
         try {
             abrirBanco();
-            String query = "UPDATE " + nomeTabela + " SET "
-                    + descricao + " = ?,"
-                    + valor + " = ?,"
-                    + tempoMedioAtendimento + " = ?, "
-                    + suspenso + " = ? "
-                    + "WHERE " + idServico + "=?;";
+            String query = "UPDATE " + NOME_TABELA_SERVICO + " SET "
+                    + DESCRICAO_SERVICO + " = ?,"
+                    + VALOR_SERVICO + " = ?,"
+                    + TEMPO_MEDIO_ATENDIMENTO_SERVICO + " = ?, "
+                    + SUSPENSO_SERVICO + " = ? "
+                    + "WHERE " + ID_SERVICO + " = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, servico.getDescricao());
             pst.setFloat(2, servico.getValor());
@@ -97,17 +97,17 @@ public class ManterServicoDAO extends DAO {
         try {
             Servico servicobean = new Servico();
             abrirBanco();
-            String query = "SELECT * FROM " + nomeTabela + " WHERE " + idServico + " = ?";
+            String query = "SELECT * FROM " + NOME_TABELA_SERVICO + " WHERE " + ID_SERVICO + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                servicobean.setIdServico(rs.getInt(idServico));
-                servicobean.setValor(rs.getFloat(valor));
-                servicobean.setDescricao(rs.getString(descricao));
-                servicobean.setSuspenso(rs.getBoolean(suspenso));
-                servicobean.setTempoMedioAtendimento(rs.getString(tempoMedioAtendimento));
+                servicobean.setIdServico(rs.getInt(ID_SERVICO));
+                servicobean.setValor(rs.getFloat(VALOR_SERVICO));
+                servicobean.setDescricao(rs.getString(DESCRICAO_SERVICO));
+                servicobean.setSuspenso(rs.getBoolean(SUSPENSO_SERVICO));
+                servicobean.setTempoMedioAtendimento(rs.getString(TEMPO_MEDIO_ATENDIMENTO_SERVICO));
                 return servicobean;
             }
             fecharBanco();

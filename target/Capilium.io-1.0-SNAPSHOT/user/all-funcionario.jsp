@@ -3,16 +3,15 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="br.com.controller.Funcionario"%>
 <%@page import="br.com.DAO.ManterFuncionarioDAO"%>
-<%@include file="util/header.jsp" %> 
-<%@include file="util/session.jsp"%> 
+<%@include file="../util/header.jsp" %> 
 <body>
-    <%@include file="util/navbar-in.jsp" %>
+    <%@include file="../util/navbar-in-user.jsp" %>
     <div id="main" class="container-fluid bg-light p-3" style="margin-top: 4em">
-        
+
 
         <%
             session.removeAttribute("id");//limpando a session
-            
+
             String msg = "";
             msg = (String) request.getAttribute("msg"); // Mensagem de aviso ou validaçõe que vem da servlets
             boolean show = (msg == null || msg.isEmpty()) ? false : true;
@@ -41,7 +40,7 @@
                 </div>
             </div>
             <div class="text-right col-sm-3 pr-4">
-                <a href="form-funcionario.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar funcionario</a>
+                <a href="/capilium.io/user/form-funcionario.jsp" class="btn btn-outline-success h2"><span class="fa fa-plus fa-fw"></span>Cadastrar Funcionario</a>
             </div>
         </div> 
 
@@ -65,17 +64,40 @@
                         funcionario = listaFuncionario.get(i);
                         /*Criar uma session para armazenar o valor do id 
                         para realizar a exclusão ou alteração do funcionario selecionado*/
-                        session.setAttribute("id", String.valueOf(funcionario.getIdFuncionario())); 
+//                        session.setAttribute("id", String.valueOf(funcionario.getIdFuncionario()));
                 %>
                 <tr>
                     <td><%=funcionario.getMatricula()%></td>
                     <td><%=funcionario.getNome()%></td>
                     <td class="actions">
-                        <!--<a class="btn btn-outline-success btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>-->
-                        <a class="btn btn-outline-warning btn-xs" <%="href='BuscarFuncionario?idFuncionario="+String.valueOf(funcionario.getIdFuncionario())+"'"%>><span class="fa fa-pencil fa-fw"></span></a>
+                        <!--<a class="btn btn-outline-success btn-xs" <%="href='BuscarFuncionario?idFuncionario=" + String.valueOf(funcionario.getIdFuncionario()) + "&view=1'"%>><span class="fa fa-eye fa-fw"></span></a>-->
+                        <a class="btn btn-outline-warning btn-xs" <%="href='/capilium.io/BuscarFuncionario?idFuncionario=" + String.valueOf(funcionario.getIdFuncionario()) + "'"%>><span class="fa fa-pencil fa-fw"></span></a>
                         <a class="delete btn btn-outline-danger btn-xs"  href="#" data-toggle="modal" data-target="#delete-modal"><span class="fa fa-trash-o fa-fw"></span></a>
                     </td>
                 </tr>
+                <!-- Modal -->
+                <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="modalLabel">Excluir Funcionario</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Fechar"><span aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <strong >Deseja realmente prosseguir?</strong></br>
+                                Após a confirmação essa ação não poderá ser desfeita?
+                            </div>
+                            <form method="POST" action="/capilium.io/DeletarFuncionario">
+                                <div class="modal-footer">
+                                    <input type="hidden" name="idFuncionario" id="idFuncionario" 
+                                           <%="value='" + String.valueOf(funcionario.getIdFuncionario()) + "'"%>/>
+                                    <button type="submit" class="btn btn-primary">Sim</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal">N&atilde;o</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <%}
                 %>
                 </tbody>
@@ -85,7 +107,7 @@
     </div> <!-- /#list -->
 
 
-    <!-- Modal -->
+<!--     Modal 
     <div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -100,13 +122,13 @@
                 <form method="POST" action="DeletarFuncionario">
                     <div class="modal-footer">
                         <input type="hidden" name="idFuncionario" id="funcionarioId" 
-                               <%="value='" + String.valueOf(session.getAttribute("id")) + "'"%>/>
+                               />
                         <button type="submit" class="btn btn-primary">Sim</button>
                         <button type="button" class="btn btn-danger" data-dismiss="modal">N&atilde;o</button>
                     </div>
                 </form>
             </div>
         </div>
-    </div>
+    </div>-->
 </body>
-<%@include file="util/footer.jsp" %> 
+<%@include file="../util/footer.jsp" %> 

@@ -48,12 +48,12 @@ public class EditarFuncionario extends HttpServlet {
                 request.setAttribute("matricula",funcionario.getMatricula());
                 request.setAttribute("nome",funcionario.getNome());
                 request.setAttribute("idFuncionario",String.valueOf(funcionario.getIdFuncionario()));
-                request.getRequestDispatcher("form-funcionario.jsp").forward(request, response);
+                request.getRequestDispatcher("user/form-funcionario.jsp").forward(request, response);
             } else {
                 funcionarioDAO.alterar(funcionario);
 
                 request.setAttribute("msg", "Alterado com sucesso!!!");
-                request.getRequestDispatcher("all-funcionario.jsp").forward(request, response);
+                request.getRequestDispatcher("user/all-funcionario.jsp").forward(request, response);
             }
        
         

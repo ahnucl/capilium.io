@@ -25,7 +25,7 @@ public class BuscarFuncionario extends HttpServlet {
         request.setAttribute("matricula",funcionario.getMatricula());
         request.setAttribute("nome",funcionario.getNome());
         request.setAttribute("idFuncionario",String.valueOf(funcionario.getIdFuncionario()));
-        request.getRequestDispatcher("form-funcionario.jsp").forward(request, response);
+        request.getRequestDispatcher("user/form-funcionario.jsp").forward(request, response);
        
             
         }
