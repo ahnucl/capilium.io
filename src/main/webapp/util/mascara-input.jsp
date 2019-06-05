@@ -1,4 +1,4 @@
-<script src="js/masked.input.js" type="text/javascript"></script>
+<script src="/capilium.io/js/masked.input.js" type="text/javascript"></script>
 <script >
     cpfOptions = {
         onKeyPress: function (val, e, field, options) {

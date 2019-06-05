@@ -1,7 +1,11 @@
 package br.com.bean.cliente;
 
+import br.com.DAO.ManterClienteDAO;
+import br.com.controller.Cliente;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,10 +23,22 @@ public class BuscarCliente extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws ServletException, IOException, Exception {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             
+        ManterClienteDAO clienteDAO = new ManterClienteDAO();
+        Cliente cliente = new Cliente();
+        cliente = clienteDAO.pesquisar(Integer.valueOf(request.getParameter("id")));
+        
+        request.setAttribute("idCliente",String.valueOf(cliente.getIdCliente()));
+        request.setAttribute("nome",cliente.getNome());
+        request.setAttribute("telefone",cliente.getTelefone());
+        request.setAttribute("email",cliente.getEmail());
+        request.setAttribute("cpf",cliente.getCpf());
+        request.setAttribute("login",cliente.getUsuario().getLogin());
+        
+        request.getRequestDispatcher("/capilium.io/client/update-cliente.jsp").forward(request, response);
         }
     }
 
@@ -38,7 +54,11 @@ public class BuscarCliente extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(BuscarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**
@@ -52,7 +72,11 @@ public class BuscarCliente extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        try {
+            processRequest(request, response);
+        } catch (Exception ex) {
+            Logger.getLogger(BuscarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     /**

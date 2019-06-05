@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -39,8 +38,8 @@ public class DeletarCliente extends HttpServlet {
             dao.deletar(Integer.valueOf(request.getParameter("id")));
             
             request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("all-cliente.jsp");
-            rd.forward(request, response);
+            /*RequestDispatcher rd =*/ request.getRequestDispatcher("user/all-cliente.jsp").forward(request, response);   
+            //rd.forward(request, response);
         }
     }
 

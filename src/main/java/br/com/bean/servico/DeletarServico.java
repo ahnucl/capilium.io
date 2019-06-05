@@ -37,10 +37,10 @@ public class DeletarServico extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             
             ManterServicoDAO dao = new ManterServicoDAO();
-            dao.deletar(Integer.valueOf(request.getParameter("idServico")));
+            dao.deletar(Integer.valueOf(request.getParameter("servicoId")));
             
             request.setAttribute("msg", "Exclusão realizada com sucesso");
-            RequestDispatcher rd = request.getRequestDispatcher("all-servico.jsp");
+            RequestDispatcher rd = request.getRequestDispatcher("user/all-servico.jsp");
             rd.forward(request, response);
         }
     }

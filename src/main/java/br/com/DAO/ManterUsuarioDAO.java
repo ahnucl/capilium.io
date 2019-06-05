@@ -9,17 +9,17 @@ public class ManterUsuarioDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
      para assim ficar mais facil se mudar o nome da coluna na tabela*/
-    private static String nomeTabela = "Usuario"; //Nome da tabela
-    private static String idUsuario = "idUsuario";//PK da tabela
-    private static String login = "login";
-    private static String senha = "senha";
+    public static String NOME_TABELA_USUARIO = "Usuario"; //Nome da tabela
+    public static String ID_USUARIO = "idUsuario";//PK da tabela
+    public static String LOGIN_USUARIO = "login";
+    public static String SENHA_USUARIO = "senha";
 
     public int inserir(Usuario user) throws Exception {
         try {
 
             abrirBanco();
-            String query = "INSERT INTO " + nomeTabela + " "
-                    + "(" + idUsuario + ", " + login + ", " + senha + ") "
+            String query = "INSERT INTO " + NOME_TABELA_USUARIO + " "
+                    + "(" + ID_USUARIO + ", " + LOGIN_USUARIO + ", " + SENHA_USUARIO + ") "
                     + "VALUES(null, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
@@ -27,7 +27,7 @@ public class ManterUsuarioDAO extends DAO {
             pst.execute();
 
             // buscar o ultimo ID na cadastrado na tabela durante a mesma conexão
-            String queryReturnId = "SELECT LAST_INSERT_ID() as id FROM " + nomeTabela;
+            String queryReturnId = "SELECT LAST_INSERT_ID() as id FROM " + NOME_TABELA_USUARIO;
             pst = con.prepareStatement(queryReturnId);
             ResultSet rs = pst.executeQuery();
             if (rs.next()) {
@@ -42,7 +42,7 @@ public class ManterUsuarioDAO extends DAO {
 
     public void deletar(int id) throws Exception {
         abrirBanco();
-        String query = "DELETE FROM " + nomeTabela + " WHERE " + idUsuario + " = ?";
+        String query = "DELETE FROM " + NOME_TABELA_USUARIO + " WHERE " + ID_USUARIO + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
         pst.setInt(1, id);
         pst.execute();
@@ -52,9 +52,9 @@ public class ManterUsuarioDAO extends DAO {
     public void alterar(Usuario user) throws Exception {
         try {
             abrirBanco();
-            String query = "UPDATE " + nomeTabela + " "
-                    + "SET " + login + " = ?, " + senha + " = ?"
-                    + "WHERE " + idUsuario + " = ?;";
+            String query = "UPDATE " + NOME_TABELA_USUARIO + " "
+                    + "SET " + LOGIN_USUARIO + " = ?, " + SENHA_USUARIO + " = ?"
+                    + "WHERE " + ID_USUARIO + " = ?;";
             pst = con.prepareStatement(query);
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
             pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
@@ -71,9 +71,9 @@ public class ManterUsuarioDAO extends DAO {
     public void esqueciSenha(Usuario user) throws Exception {
         try {
             abrirBanco();
-            String query = "UPDATE " + nomeTabela + " "
-                    + "SET " + senha + " = ?"
-                    + "WHERE " + login + " = ?;";
+            String query = "UPDATE " + NOME_TABELA_USUARIO + " "
+                    + "SET " + SENHA_USUARIO + " = ?"
+                    + "WHERE " + LOGIN_USUARIO + " = ?;";
             pst = con.prepareStatement(query);
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
 
@@ -90,8 +90,8 @@ public class ManterUsuarioDAO extends DAO {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) valor "
-                    + "FROM " + nomeTabela + " "
-                    + "WHERE " + login + " = ?";
+                    + "FROM " + NOME_TABELA_USUARIO + " "
+                    + "WHERE " + LOGIN_USUARIO + " = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(verificaLogin, "MD5")));
             ResultSet rs = pst.executeQuery();
@@ -111,16 +111,16 @@ public class ManterUsuarioDAO extends DAO {
         try {
             Usuario obj = new Usuario();
             abrirBanco();
-            String query = "SELECT " + idUsuario + " FROM "
-                    + nomeTabela + ""
-                    + " WHERE " + login + " = ? AND " + senha + " = ?";
+            String query = "SELECT " + ID_USUARIO + " FROM "
+                    + NOME_TABELA_USUARIO + ""
+                    + " WHERE " + LOGIN_USUARIO + " = ? AND " + SENHA_USUARIO + " = ?";
             pst = con.prepareStatement(query);
             pst.setString(1, MD5.stringHexa(MD5.gerarHash(user.getLogin(), "MD5")));
             pst.setString(2, MD5.stringHexa(MD5.gerarHash(user.getSenha(), "MD5")));
             ResultSet rs = pst.executeQuery();
             //Retornar esses dados para criar Session
             while (rs.next()) {
-                obj.setIdUsuario(rs.getInt(idUsuario));
+                obj.setIdUsuario(rs.getInt(ID_USUARIO));
                 return obj;
             }
             fecharBanco();
@@ -130,12 +130,12 @@ public class ManterUsuarioDAO extends DAO {
         return null;
     }
 
-    /*public boolean tipoUsuario(int id) throws Exception {
+    public boolean tipoUsuario(int id) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) AS valor FROM "
-                    + "Cliente"
-                    + " WHERE " + idUsuario + " = ?";
+                    + ManterClienteDAO.NOME_TABELA_CLIENTE
+                    + " WHERE " + ID_USUARIO + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
@@ -148,8 +148,8 @@ public class ManterUsuarioDAO extends DAO {
             System.out.println("Erro " + e.getMessage());
         }
         return false;
-    }*/
-    
+    }
+
     public String nomeUsuario(int id) throws Exception {
         try {
             abrirBanco();
@@ -160,12 +160,12 @@ public class ManterUsuarioDAO extends DAO {
                         + "WHEN LEN(CAST(c.nome AS VARCHAR(MAX))) = 0 THEN 'Administrador' "
                         + "ELSE c.nome "
                     + "END "*/
-                    + "c.nome AS nome, COUNT(c.nome) AS valor FROM "
-                    + "Cliente AS c "
+                    + "c." + ManterClienteDAO.NOME_CLIENTE + " AS nome, COUNT(c." + ManterClienteDAO.NOME_CLIENTE + ") AS valor FROM "
+                    + ManterClienteDAO.NOME_TABELA_CLIENTE + " AS c "
                     + "INNER JOIN "
-                    + nomeTabela + " AS u "
-                    + "ON c." + idUsuario + " = u." + idUsuario
-                    + " WHERE u." + idUsuario + " = ?";
+                    + NOME_TABELA_USUARIO + " AS u "
+                    + "ON c." + ID_USUARIO + " = u." + ID_USUARIO
+                    + " WHERE u." + ID_USUARIO + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
@@ -180,19 +180,19 @@ public class ManterUsuarioDAO extends DAO {
         }
         return null;
     }
-    
+
     public Usuario pesquisar(int id) throws Exception {
         try {
             Usuario userbean = new Usuario();
             abrirBanco();
-            String query = "SELECT * FROM " + nomeTabela + " WHERE " + idUsuario + " = ?";
+            String query = "SELECT * FROM " + NOME_TABELA_USUARIO + " WHERE " + ID_USUARIO + " = ?";
             pst = con.prepareStatement(query);
             pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                userbean.setIdUsuario(rs.getInt(idUsuario));
-                userbean.setLogin(rs.getString(login));
+                userbean.setIdUsuario(rs.getInt(ID_USUARIO));
+                userbean.setLogin(rs.getString(LOGIN_USUARIO));
                 return userbean;
             }
             fecharBanco();
@@ -201,4 +201,5 @@ public class ManterUsuarioDAO extends DAO {
         }
         return null;
     }
+
 }

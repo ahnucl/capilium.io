@@ -59,6 +59,7 @@ public class UsuarioControllers extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("nomeUsuarioLogado", nomeUsuarioLogado);
                 session.setAttribute("idUsuario", Integer.toString(idLogin));
+                
                 if(nomeUsuarioLogado.equals("Administrador") || nomeUsuarioLogado == "Administrador"){
                     request.getRequestDispatcher("user/home.jsp").forward(request, response);
                 }else{

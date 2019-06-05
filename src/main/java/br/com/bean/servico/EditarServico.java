@@ -31,14 +31,14 @@ public class EditarServico extends HttpServlet {
             
             servico.setIdServico(Integer.valueOf(request.getParameter("idServico")));
             servico.setDescricao(request.getParameter("descricao"));
-            servico.setSuspenso(Boolean.valueOf(request.getParameter("tempoMedioAtendimento")));
+            servico.setSuspenso(Boolean.valueOf(request.getParameter("suspenso")));
             servico.setTempoMedioAtendimento(request.getParameter("tempoMedioAtendimento"));
             servico.setValor(Float.valueOf(request.getParameter("valor")));
             
             servicoDAO.alterar(servico);
             
             request.setAttribute("msg", "Alterado com sucesso!!!");
-            request.getRequestDispatcher("all-servico.jsp").forward(request, response);
+            request.getRequestDispatcher("user/all-servico.jsp").forward(request, response);
         }
     }
 

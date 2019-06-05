@@ -9,20 +9,20 @@ import java.util.ArrayList;
 public class ManterClienteDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o nome da coluna na tabela*/
-    private static String nomeTabela = "Cliente"; //nome da tabela
-    private static String idCliente = "idCliente"; // PK da tablea
-    private static String telefone = "telefone";
-    private static String nome = "nome";
-    private static String email = "email";
-    private static String cpf = "cpf";
-    private static String idUsuario = "idUsuario";// FK da tablea
+    para assim ficar mais facil se mudar o NOME_CLIENTE da coluna na tabela*/
+    public static String NOME_TABELA_CLIENTE = "Cliente"; //NOME_CLIENTE da tabela
+    public static String ID_CLIENTE = "idCliente"; // PK da tablea
+    public static String TELEFONE_CLIENTE = "telefone";
+    public static String NOME_CLIENTE = "nome";
+    public static String EMAIL_CLIENTE = "email";
+    public static String CPF_CLIENTE = "cpf";
+    public static String ID_USUARIO_CLIENTE = "idUsuario";// FK da tablea
 
     public void inserir(Cliente cliente) throws Exception {
         try {
             abrirBanco();
-            String query = "INSERT INTO " + nomeTabela + " (" + idCliente + ", " + nome + ", " + telefone + ", "
-                    + email + ", " + cpf + ", " + idUsuario + ") "
+            String query = "INSERT INTO " + NOME_TABELA_CLIENTE + " (" + ID_CLIENTE + ", " + NOME_CLIENTE + ", " + TELEFONE_CLIENTE + ", "
+                    + EMAIL_CLIENTE + ", " + CPF_CLIENTE + ", " + ID_USUARIO_CLIENTE + ") "
                     + "VALUES(NULL, ?, ?, ?, ?, ?)";
             pst = (PreparedStatement) con.prepareStatement(query);
             pst.setString(1, cliente.getNome());
@@ -41,7 +41,7 @@ public class ManterClienteDAO extends DAO {
         ArrayList<Cliente> listaCliente = new ArrayList<Cliente>();
         try {
             abrirBanco();
-            String query = "SELECT * FROM " + nomeTabela + " ORDER BY(" + idCliente + ")DESC LIMIT 0,5";
+            String query = "SELECT * FROM " + NOME_TABELA_CLIENTE + " ORDER BY(" + ID_CLIENTE + ")DESC LIMIT 0,5";
             pst = con.prepareStatement(query);
             ResultSet rs = pst.executeQuery();
             Cliente clientebean;
@@ -50,12 +50,12 @@ public class ManterClienteDAO extends DAO {
                 clientebean = new Cliente();
                 usuariobean = new Usuario();
 
-                clientebean.setIdCliente(rs.getInt(idCliente));
-                clientebean.setTelefone(rs.getString(telefone));
-                clientebean.setEmail(rs.getString(email));
-                clientebean.setCpf(rs.getString(cpf));
-                clientebean.setNome(rs.getString(nome));
-                usuariobean.setIdUsuario(rs.getInt(idUsuario));
+                clientebean.setIdCliente(rs.getInt(ID_CLIENTE));
+                clientebean.setTelefone(rs.getString(TELEFONE_CLIENTE));
+                clientebean.setEmail(rs.getString(EMAIL_CLIENTE));
+                clientebean.setCpf(rs.getString(CPF_CLIENTE));
+                clientebean.setNome(rs.getString(NOME_CLIENTE));
+                usuariobean.setIdUsuario(rs.getInt(ID_USUARIO_CLIENTE));
                 clientebean.setUsuario(usuariobean);
 
                 listaCliente.add(clientebean);
@@ -69,7 +69,7 @@ public class ManterClienteDAO extends DAO {
 
     public void deletar(int id) throws Exception {
         abrirBanco();
-        String query = "DELETE FROM " + nomeTabela + " WHERE " + idCliente + " = ?";
+        String query = "DELETE FROM " + NOME_TABELA_CLIENTE + " WHERE " + ID_CLIENTE + " = ?";
         pst = (PreparedStatement) con.prepareStatement(query);
         pst.setInt(1, id);
         pst.execute();
@@ -79,12 +79,12 @@ public class ManterClienteDAO extends DAO {
     public void alterar(Cliente cliente) throws Exception {
         try {
             abrirBanco();
-            String query = "UPDATE " + nomeTabela + " SET "
-                    + telefone + " = ?,"
-                    + email + " = ?,"
-                    + cpf + " = ? "
-                    + nome + " = ? "
-                    + "WHERE " + idCliente + "=?;";
+            String query = "UPDATE " + NOME_TABELA_CLIENTE + " SET "
+                    + TELEFONE_CLIENTE + " = ?,"
+                    + EMAIL_CLIENTE + " = ?,"
+                    + CPF_CLIENTE + " = ? "
+                    + NOME_CLIENTE + " = ? "
+                    + "WHERE " + ID_CLIENTE + "=?;";
             pst = con.prepareStatement(query);
             pst.setString(1, cliente.getTelefone());
             pst.setString(2, cliente.getEmail());
@@ -100,27 +100,27 @@ public class ManterClienteDAO extends DAO {
         }
     }
 
-    public Cliente pesquisar(Cliente cliente) throws Exception {
+    public Cliente pesquisar(int id) throws Exception {
         try {
             Cliente clientebean = new Cliente();
             Usuario usuariobean = new Usuario();
+            ManterUsuarioDAO dao = new ManterUsuarioDAO();
             abrirBanco();
-            String query = "SELECT * FROM " + nomeTabela + " WHERE " + idCliente + " = ?";
+            String query = "SELECT * FROM " + NOME_TABELA_CLIENTE + " WHERE " + ID_CLIENTE + " = ?";
             pst = con.prepareStatement(query);
-            pst.setInt(1, cliente.getIdCliente());
+            pst.setInt(1, id);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
-                clientebean = new Cliente();
 
-                clientebean.setIdCliente(rs.getInt(idCliente));
-                clientebean.setTelefone(rs.getString(telefone));
-                clientebean.setEmail(rs.getString(email));
-                clientebean.setCpf(rs.getString(cpf));
-                clientebean.setCpf(rs.getString(nome));
-                usuariobean.setIdUsuario(rs.getInt(idUsuario));
+                clientebean.setIdCliente(rs.getInt(ID_CLIENTE));
+                clientebean.setTelefone(rs.getString(TELEFONE_CLIENTE));
+                clientebean.setEmail(rs.getString(EMAIL_CLIENTE));
+                clientebean.setCpf(rs.getString(CPF_CLIENTE));
+                clientebean.setNome(rs.getString(NOME_CLIENTE));
+                usuariobean = dao.pesquisar(rs.getInt(ID_USUARIO_CLIENTE));
                 clientebean.setUsuario(usuariobean);
-
+                fecharBanco();
                 return clientebean;
             }
             fecharBanco();
@@ -130,14 +130,14 @@ public class ManterClienteDAO extends DAO {
         return null;
     }
 
-    public boolean verificaCPF_Existe(String verificaCPF) throws Exception {
+    public boolean verificaCPF_Existe(String CPF) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) valor \n"
-                    + "FROM " + nomeTabela + " \n"
-                    + "WHERE " + cpf + " = ?";
+                    + "FROM " + NOME_TABELA_CLIENTE + " \n"
+                    + "WHERE " + CPF_CLIENTE + " = ?";
             pst = con.prepareStatement(query);
-            pst.setString(1, verificaCPF);
+            pst.setString(1, CPF);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {
@@ -151,14 +151,14 @@ public class ManterClienteDAO extends DAO {
         return false;
     }
 
-    public boolean verificaEmail_Existe(String verificaEmail) throws Exception {
+    public boolean verificaEmail_Existe(String email) throws Exception {
         try {
             abrirBanco();
             String query = "SELECT COUNT(*) valor \n"
-                    + "FROM " + nomeTabela + " \n"
-                    + "WHERE " + email + " = ?";
+                    + "FROM " + NOME_TABELA_CLIENTE + " \n"
+                    + "WHERE " + EMAIL_CLIENTE + " = ?";
             pst = con.prepareStatement(query);
-            pst.setString(1, verificaEmail);
+            pst.setString(1, email);
             ResultSet rs = pst.executeQuery();
 
             if (rs.next()) {

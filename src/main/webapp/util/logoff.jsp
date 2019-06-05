@@ -14,9 +14,10 @@
             session.removeAttribute("id");
             session.invalidate();
             
-            //FacesContext.getCurrentInstance().getExternalContext().getRealPath("");
-           // request.getRequestDispatcher("index.jsp").forward(request, response);;
-            response.sendRedirect("/capilium.io/index.jsp");
+//            FacesContext.getCurrentInstance().getExternalContext().getRealPath("/capilium.io");
+//            request.getRequestDispatcher("index.jsp").forward(request, response);
+              response.sendRedirect(request.getContextPath()+"/index.jsp");
+//            response.sendRedirect("/capilium.io/index.jsp");
         %>
     </body>
 </html>

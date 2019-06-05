@@ -61,24 +61,56 @@ public class CadastrarCliente extends HttpServlet {
 
                             request.setAttribute("msg", "Usuario cadastrado com sucesso, Efetue login para ter acesso ao sistema!!!");
                             request.setAttribute("verde", "OK");//alterar a cor do alerta
-                            request.getRequestDispatcher("index.jsp").forward(request, response);
+//                            if (userdao.tipoUsuario(Integer.valueOf(request.getParameter("id")))
+//                                    || (request.getParameter("id") == null
+//                                    || request.getParameter("id").isEmpty())) {
+                                request.getRequestDispatcher("index.jsp").forward(request, response);
+//                            } else {
+//                                request.getRequestDispatcher("all-cliente.jsp").forward(request, response);
+//                            }
 
                         } else {
                             request.setAttribute("msg", "O E-mail informado já está em uso!!!");
-                            request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+                            /*Para saber se a ação veio do cliente ou usuario*/
+//                            if (userdao.tipoUsuario(Integer.valueOf(request.getParameter("id")))
+//                                    || (request.getParameter("id") == null
+//                                    || request.getParameter("id").isEmpty())) {
+                                request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                            } else {
+//                                request.getRequestDispatcher("form-cliente.jsp").forward(request, response);
+//                            }
+
                         }
                     } else {
                         request.setAttribute("msg", "O CPF informado já está em uso!!!");
-                        request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                        if (userdao.tipoUsuario(Integer.valueOf(request.getParameter("id")))
+//                                || (request.getParameter("id") == null
+//                                || request.getParameter("id").isEmpty())) {
+                            request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                        } else {
+//                            request.getRequestDispatcher("form-cliente.jsp").forward(request, response);
+//                        }
                     }
 
                 } else {
                     request.setAttribute("msg", "O login informado já está em uso!!!");
-                    request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                    if (userdao.tipoUsuario(Integer.valueOf(request.getParameter("id")))
+//                            || (request.getParameter("id") == null
+//                            || request.getParameter("id").isEmpty())) {
+                        request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                    } else {
+//                        request.getRequestDispatcher("form-cliente.jsp").forward(request, response);
+//                    }
                 }
             } else {
                 request.setAttribute("msg", "Senhas informadas não conferem!!!");
-                request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                if (userdao.tipoUsuario(Integer.valueOf(request.getParameter("id")))
+//                        || (request.getParameter("id") == null
+//                        || request.getParameter("id").isEmpty())) {
+                    request.getRequestDispatcher("sign-in.jsp").forward(request, response);
+//                } else {
+//                    request.getRequestDispatcher("form-cliente.jsp").forward(request, response);
+//                }
             }
 
         }

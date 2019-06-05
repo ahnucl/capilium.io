@@ -35,7 +35,7 @@ public class BuscarServico extends HttpServlet {
             request.setAttribute("tempoMedioAtendimento", servico.getTempoMedioAtendimento());
             request.setAttribute("valor", String.valueOf(servico.getValor()));
             request.setAttribute("idServico", String.valueOf(servico.getIdServico()));
-            request.getRequestDispatcher("form-servico.jsp").forward(request, response);
+            request.getRequestDispatcher("user/form-servico.jsp").forward(request, response);
         }
     }
 
