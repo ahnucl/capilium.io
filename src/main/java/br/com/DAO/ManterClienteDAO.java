@@ -9,8 +9,8 @@ import java.util.ArrayList;
 public class ManterClienteDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o NOME_CLIENTE da coluna na tabela*/
-    public static String NOME_TABELA_CLIENTE = "Cliente"; //NOME_CLIENTE da tabela
+    para assim ficar mais facil se mudar o nome da coluna na tabela*/
+    public static String NOME_TABELA_CLIENTE = "Cliente"; //nome da tabela
     public static String ID_CLIENTE = "idCliente"; // PK da tablea
     public static String TELEFONE_CLIENTE = "telefone";
     public static String NOME_CLIENTE = "nome";

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 public class ManterFuncionarioDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o NOME_FUNCIONARIO da coluna na tabela*/
+    para assim ficar mais facil se mudar o nome da coluna na tabela*/
     public static String NOME_TABELA_FUNCIONARIO = "Funcionario";//Nome da tabela
     public static String ID_FUNCIONARIO = "idFuncionario";//PK da tabela
     public static String MATRICULA_FUNCIONARIO = "matricula";
