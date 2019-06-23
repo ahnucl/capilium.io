@@ -44,6 +44,7 @@
             <table class="table table-striped" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Data do atendimento</th>
                         <th>Início do atendimento</th>
                         <th>Fim do atendimento</th>
@@ -60,7 +61,7 @@
                     Atendimento at = new Atendimento();
                     Funcionario f ;
                     Cliente c;
-                    ArrayList<Atendimento> listaAt = daoAt.pesquisarOsMeus((String)session.getAttribute("idUsuario"));
+                    ArrayList<Atendimento> listaAt = daoAt.pesquisarOsMeus((String)session.getAttribute("idClienteLogado"));
 
                     for (int i = 0; i < listaAt.size(); i++) {
                         at = listaAt.get(i);
@@ -69,8 +70,10 @@
 //                        session.setAttribute("id", String.valueOf(funcionario.getIdFuncionario()));
                         f = daoF.pesquisar(at.getIdFuncionario());
                         c = daoC.pesquisar(at.getIdCliente());
+                       
                 %>
                 <tr>
+                    <td><%=at.getIdAtendimento() %></td>
                     <td><%=at.getDataAtendimento()%></td>
                     <td><%=at.getHorarioInicio()%></td>
                     <td><%=at.getHorarioFim()%></td>
@@ -86,6 +89,8 @@
                 </tbody>
             </table>
         </div>
+<!--                <input  class="form-control" type="text" value="<%= session.getAttribute("idUsuario")%>">
+                <input  class="form-control" type="text" value="<%= session.getAttribute("idClienteLogado")%>">-->
         
         
         

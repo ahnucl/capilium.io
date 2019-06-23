@@ -122,7 +122,9 @@ public class ManterAtendimentoDAO extends DAO {
             String query = 
                     "SELECT * "
                     + "FROM " + NOME_TABELA_ATENDIMENTO + " "
-                    + "ORDER BY " + DATA_ATENDIMENTO_ATENDIMENTO + " DESC,"
+                    + "ORDER BY "
+                    + ID_ATENDIMENTO + " DESC, "
+                    + DATA_ATENDIMENTO_ATENDIMENTO + " DESC, "
                     + HORARIO_INICIO_ATENDIMENTO + " DESC "
                     ;
 
@@ -162,7 +164,9 @@ public class ManterAtendimentoDAO extends DAO {
             String query = 
                     "SELECT * "
                     + "FROM " + NOME_TABELA_ATENDIMENTO + " WHERE " + ID_CLIENTE_ATENDIMENTO + " = ? "
-                    + "ORDER BY " + DATA_ATENDIMENTO_ATENDIMENTO + " DESC,"
+                    + "ORDER BY " 
+                    + ID_ATENDIMENTO + " DESC, "
+                    + DATA_ATENDIMENTO_ATENDIMENTO + " DESC, "
                     + HORARIO_INICIO_ATENDIMENTO + " DESC ";
            
             pst = con.prepareStatement(query);

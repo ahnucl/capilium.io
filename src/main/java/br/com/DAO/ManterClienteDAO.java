@@ -130,6 +130,36 @@ public class ManterClienteDAO extends DAO {
         return null;
     }
 
+    public Cliente pesquisarPorIdUsuario(int idUsuario) throws Exception {
+        try {
+            Cliente clientebean = new Cliente();
+            Usuario usuariobean = new Usuario();
+            ManterUsuarioDAO dao = new ManterUsuarioDAO();
+            abrirBanco();
+            String query = "SELECT * FROM " + NOME_TABELA_CLIENTE + " WHERE " + ID_USUARIO_CLIENTE + " = ?";
+            pst = con.prepareStatement(query);
+            pst.setInt(1, idUsuario);
+            ResultSet rs = pst.executeQuery();
+
+            if (rs.next()) {
+
+                clientebean.setIdCliente(rs.getInt(ID_CLIENTE));
+                clientebean.setTelefone(rs.getString(TELEFONE_CLIENTE));
+                clientebean.setEmail(rs.getString(EMAIL_CLIENTE));
+                clientebean.setCpf(rs.getString(CPF_CLIENTE));
+                clientebean.setNome(rs.getString(NOME_CLIENTE));
+                usuariobean = dao.pesquisar(rs.getInt(ID_USUARIO_CLIENTE));
+                clientebean.setUsuario(usuariobean);
+                fecharBanco();
+                return clientebean;
+            }
+            fecharBanco();
+        } catch (Exception e) {
+            System.out.println("Erro " + e.getMessage());
+        }
+        return null;
+    }
+    
     public boolean verificaCPF_Existe(String CPF) throws Exception {
         try {
             abrirBanco();

@@ -17,6 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -54,13 +55,25 @@ public class CadastrarAgendamento extends HttpServlet {
             //Inserindo serviços (Atendimento_servico) - Se for usar o checkbox, receber como array e fazer um loop
             AtendimentoServico as = new AtendimentoServico(a.getIdAtendimento(), servico);
             AtendimentoServicoDAO asDAO = new AtendimentoServicoDAO();
-            asDAO.inserir(as);
+            int lastInsertAtendimentoServico = asDAO.inserir(as);
+            System.out.println(lastInsertAtendimentoServico);
             
             //Redirecionar
             request.setAttribute("msg", "Atendimento cadastrado com sucesso.");
             request.setAttribute("verde", "OK");//alterar a cor do alerta
-            request.getRequestDispatcher("user/all-agendamento.jsp").forward(request, response);
-            response.sendRedirect("user/all-agendamento.jsp");
+            
+            HttpSession session = request.getSession();
+            
+            if (session.getAttribute("idClienteLogado") == null){
+                request.getRequestDispatcher("user/all-agendamento.jsp").forward(request, response);
+//                response.sendRedirect("user/all-agendamento.jsp");
+            } else {
+                request.getRequestDispatcher("client/my-agendamento.jsp").forward(request, response);
+//                response.sendRedirect("client/my-agendamento.jsp");
+            }
+            //System.out.println(idClienteLogado);
+            
+            
         }
     }
 
