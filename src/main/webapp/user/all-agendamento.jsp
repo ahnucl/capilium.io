@@ -44,6 +44,7 @@
             <table class="table table-striped" cellspacing="0" cellpadding="0">
                 <thead>
                     <tr>
+                        <th>#</th>
                         <th>Data do atendimento</th>
                         <th>Início do atendimento</th>
                         <th>Fim do atendimento</th>
@@ -72,6 +73,7 @@
                         c = daoC.pesquisar(at.getIdCliente());
                 %>
                 <tr>
+                    <td><%=at.getIdAtendimento() %></td>
                     <td><%=at.getDataAtendimento()%></td>
                     <td><%=at.getHorarioInicio()%></td>
                     <td><%=at.getHorarioFim()%></td>
@@ -88,6 +90,8 @@
             </table>
         </div>
         
+<!--                <input  class="form-control" type="text" value="<%= session.getAttribute("idUsuario")%>">
+                <input  class="form-control" type="text" value="<%= session.getAttribute("idClienteLogado")%>">-->
         
         
     </body>

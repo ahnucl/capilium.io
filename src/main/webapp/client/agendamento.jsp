@@ -13,7 +13,7 @@
             <h3>Agendamento</h3>
             
             <form class="needs-validation" method="POST" action="../CadastrarAgendamento" novalidate>
-                <input id="cliente" class="form-control" hidden="" value="<%=session.getAttribute("idUsuario")%>" name="cliente" >
+                <input id="clienteLogado" class="form-control" hidden="" value="<%=session.getAttribute("idClienteLogado")%>" name="cliente" >
                 <div class=" w-50" >
                     <div class="form-group row">
                          <label class="col-lg-4 col-form-label">Funcionário:</label> 

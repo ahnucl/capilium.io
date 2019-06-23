@@ -5,7 +5,9 @@
  */
 package br.com.bean.usuario;
 
+import br.com.DAO.ManterClienteDAO;
 import br.com.DAO.ManterUsuarioDAO;
+import br.com.controller.Cliente;
 import br.com.controller.Usuario;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,6 +36,8 @@ public class UsuarioControllers extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             int idLogin = 0;
+            
+            Cliente clienteLogado = null;
             String nomeUsuarioLogado = "";
             try {
 
@@ -42,10 +46,12 @@ public class UsuarioControllers extends HttpServlet {
                 user.setLogin(request.getParameter("login"));
                 user.setSenha(request.getParameter("senha"));
 
+                ManterClienteDAO daoC = new ManterClienteDAO();
                 ManterUsuarioDAO dao = new ManterUsuarioDAO();
                 Usuario permissao = dao.verificarAcesso(user);
                
                 idLogin = permissao.getIdUsuario();
+                clienteLogado = daoC.pesquisarPorIdUsuario(idLogin);
                 
                 nomeUsuarioLogado = (String) dao.nomeUsuario(permissao.getIdUsuario());// nome do cliente para aparecer no navbar
             
@@ -59,7 +65,10 @@ public class UsuarioControllers extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("nomeUsuarioLogado", nomeUsuarioLogado);
                 session.setAttribute("idUsuario", Integer.toString(idLogin));
-                
+                if (clienteLogado != null) {
+                    session.setAttribute("idClienteLogado", Integer.toString(clienteLogado.getIdCliente()));
+                }
+                                
                 if(nomeUsuarioLogado.equals("Administrador") || nomeUsuarioLogado == "Administrador"){
                     request.getRequestDispatcher("user/home.jsp").forward(request, response);
                 }else{
