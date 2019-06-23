@@ -89,8 +89,8 @@
                 </tbody>
             </table>
         </div>
-                <input  class="form-control" type="text" value="<%= session.getAttribute("idUsuario")%>">
-                <input  class="form-control" type="text" value="<%= session.getAttribute("idClienteLogado")%>">
+<!--                <input  class="form-control" type="text" value="<%= session.getAttribute("idUsuario")%>">
+                <input  class="form-control" type="text" value="<%= session.getAttribute("idClienteLogado")%>">-->
         
         
         
