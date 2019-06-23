@@ -8,11 +8,11 @@ import java.util.ArrayList;
 public class ManterFuncionarioDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o NOME_FUNCIONARIO da coluna na tabela*/
-    public static String NOME_TABELA_FUNCIONARIO = "Funcionario";//Nome da tabela
-    public static String ID_FUNCIONARIO = "idFuncionario";//PK da tabela
-    public static String MATRICULA_FUNCIONARIO = "matricula";
-    public static String NOME_FUNCIONARIO = "nome";//campo da tabela usuario
+    para assim ficar mais facil se mudar o nome da coluna na tabela*/
+    public static final String NOME_TABELA_FUNCIONARIO = "Funcionario";//Nome da tabela
+    public static final String ID_FUNCIONARIO = "idFuncionario";//PK da tabela
+    public static final String MATRICULA_FUNCIONARIO = "matricula";
+    public static final String NOME_FUNCIONARIO = "nome";//campo da tabela usuario
 
     public void inserir(Funcionario funcionario) throws Exception {
 
@@ -152,7 +152,7 @@ public class ManterFuncionarioDAO extends DAO {
             String query = "SELECT COUNT(*) valor "
                     + "FROM " + NOME_TABELA_FUNCIONARIO + " "
                     + "WHERE " + MATRICULA_FUNCIONARIO + " = ?"
-                    + "AND" + ID_FUNCIONARIO + " != ?";
+                    + "AND " + ID_FUNCIONARIO + " != ?";
             pst = con.prepareStatement(query);
             pst.setString(1, matricula);
             pst.setInt(2, id);

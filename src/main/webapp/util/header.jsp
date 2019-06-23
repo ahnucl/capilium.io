@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="/capilium.io/css/padraoClient.css">
         <link rel="stylesheet" href="/capilium.io/webjars/font-awesome/4.7.0/css/font-awesome.min.css">
         <title>Capilium.io</title>
+        <script src="/capilium.io/webjars/jquery/3.4.0/jquery.min.js"></script>
     </head>
 
 

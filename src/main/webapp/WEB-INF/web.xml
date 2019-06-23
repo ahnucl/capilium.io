@@ -68,6 +68,14 @@
         <servlet-name>EditarUsuario</servlet-name>
         <servlet-class>br.com.bean.usuario.EditarUsuario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AjaxServlet</servlet-name>
+        <servlet-class>br.com.bean.agendamento.AjaxServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>CadastrarAgendamento</servlet-name>
+        <servlet-class>br.com.bean.agendamento.CadastrarAgendamento</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>WebjarsServlet</servlet-name>
         <url-pattern>/webjars/*</url-pattern>
@@ -131,6 +139,14 @@
     <servlet-mapping>
         <servlet-name>EditarUsuario</servlet-name>
         <url-pattern>/EditarUsuario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AjaxServlet</servlet-name>
+        <url-pattern>/AjaxServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CadastrarAgendamento</servlet-name>
+        <url-pattern>/CadastrarAgendamento</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

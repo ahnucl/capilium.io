@@ -9,14 +9,14 @@ import java.util.ArrayList;
 public class ManterClienteDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
-    para assim ficar mais facil se mudar o NOME_CLIENTE da coluna na tabela*/
-    public static String NOME_TABELA_CLIENTE = "Cliente"; //NOME_CLIENTE da tabela
-    public static String ID_CLIENTE = "idCliente"; // PK da tablea
-    public static String TELEFONE_CLIENTE = "telefone";
-    public static String NOME_CLIENTE = "nome";
-    public static String EMAIL_CLIENTE = "email";
-    public static String CPF_CLIENTE = "cpf";
-    public static String ID_USUARIO_CLIENTE = "idUsuario";// FK da tablea
+    para assim ficar mais facil se mudar o nome da coluna na tabela*/
+    public static final String NOME_TABELA_CLIENTE = "Cliente"; //nome da tabela
+    public static final String ID_CLIENTE = "idCliente"; // PK da tablea
+    public static final String TELEFONE_CLIENTE = "telefone";
+    public static final String NOME_CLIENTE = "nome";
+    public static final String EMAIL_CLIENTE = "email";
+    public static final String CPF_CLIENTE = "cpf";
+    public static final String ID_USUARIO_CLIENTE = "idUsuario";// FK da tablea
 
     public void inserir(Cliente cliente) throws Exception {
         try {

@@ -11,10 +11,10 @@ import java.util.logging.Logger;
 public class DAO {
 
     //Dados para configuração do banco
-    private static String IP_BD = "localhost";
-    private static String NOME_BANCO = "capillium";
-    private static String USER_BANCO = "web_app";
-    private static String SENHA_BANCO = "1234";
+    private static final String IP_BD = "localhost";
+    private static final String NOME_BANCO = "capillium";
+    private static final String USER_BANCO = "web_app";
+    private static final String SENHA_BANCO = "1234";
     //private static String USER_BANCO = "root";
     //private static String SENHA_BANCO = "";
 

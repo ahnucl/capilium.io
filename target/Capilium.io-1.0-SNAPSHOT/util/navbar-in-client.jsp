@@ -9,15 +9,12 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav bd-navbar-nav flex-row">
-            <!--<li class="nav-item">
-                <a class="nav-link" href="/capilium.io/user/all-cliente.jsp">Clientes <span class="sr-only">(current)</span></a>
+            <li class="nav-item">
+                <a class="nav-link" href="/capilium.io/client/my-agendamento.jsp">Meus agendamentos <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/capilium.io/user/all-funcionario.jsp">Funcionario</a>
+                <a class="nav-link" href="/capilium.io/client/agendamento.jsp">Agendamento de atendimentos</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/capilium.io/user/all-servico.jsp">Serviços</a>
-            </li>-->
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item dropdown " >
@@ -56,4 +53,4 @@
             </form>
         </div>
     </div>
-<%--<%@include file="../util/session-client.jsp" %>--%>
+</div>

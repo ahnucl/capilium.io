@@ -9,12 +9,12 @@ public class ManterServicoDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
     para assim ficar mais facil se mudar o nome da coluna na tabela*/
-    public static String NOME_TABELA_SERVICO = "Servico"; //nome da tabela
-    public static String ID_SERVICO = "idServico"; // PK da tablea
-    public static String DESCRICAO_SERVICO = "descricao";
-    public static String VALOR_SERVICO = "valor";
-    public static String SUSPENSO_SERVICO = "se_suspenso";
-    public static String TEMPO_MEDIO_ATENDIMENTO_SERVICO = "tempoMedioAtendimento";
+    public static final String NOME_TABELA_SERVICO = "Servico"; //nome da tabela
+    public static final String ID_SERVICO = "idServico"; // PK da tablea
+    public static final String DESCRICAO_SERVICO = "descricao";
+    public static final String VALOR_SERVICO = "valor";
+    public static final String SUSPENSO_SERVICO = "se_suspenso";
+    public static final String TEMPO_MEDIO_ATENDIMENTO_SERVICO = "tempoMedioAtendimento";
 
     public void inserir(Servico servico) throws Exception {
         try {

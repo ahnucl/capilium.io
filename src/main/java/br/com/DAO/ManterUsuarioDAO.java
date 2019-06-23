@@ -9,10 +9,10 @@ public class ManterUsuarioDAO extends DAO {
 
     /*Variaveis globais para usar em todas as Query,
      para assim ficar mais facil se mudar o nome da coluna na tabela*/
-    public static String NOME_TABELA_USUARIO = "Usuario"; //Nome da tabela
-    public static String ID_USUARIO = "idUsuario";//PK da tabela
-    public static String LOGIN_USUARIO = "login";
-    public static String SENHA_USUARIO = "senha";
+    public static final String NOME_TABELA_USUARIO = "Usuario"; //Nome da tabela
+    public static final String ID_USUARIO = "idUsuario";//PK da tabela
+    public static final String LOGIN_USUARIO = "login";
+    public static final String SENHA_USUARIO = "senha";
 
     public int inserir(Usuario user) throws Exception {
         try {

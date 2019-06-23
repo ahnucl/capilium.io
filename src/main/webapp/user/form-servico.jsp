@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-group col-md-1">
                     <label for="inputPassword4">Tempo</label>
-                    <input type="text" name="tempoMedioAtendimento" class="form-control" id="inputTempoMedioAtendimento" placeholder="" maxlength="8" required
+                    <input type="time" name="tempoMedioAtendimento" class="form-control" id="inputTempoMedioAtendimento" placeholder="" maxlength="8" required
                            <%= tempoMedioAtendimento.isEmpty() || tempoMedioAtendimento == null ? "" : "value='" + tempoMedioAtendimento + "'"%> >
                 </div>
                 <div class="form-group col-md-3">

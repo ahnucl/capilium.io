@@ -18,17 +18,12 @@
             <li class="nav-item">
                 <a class="nav-link" href="/capilium.io/user/all-servico.jsp">Serviços</a>
             </li>
-            <!--<li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Dropdown
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/capilium.io/user/agendamento.jsp">Agendamento de atendimentos</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/capilium.io/user/all-agendamento.jsp">Consulta de atendimentos</a>
+            </li>
         </ul>
         <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
             <li class="nav-item dropdown " >
